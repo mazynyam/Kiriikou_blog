@@ -6,7 +6,8 @@ import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import {Link} from 'react-router-dom'
-import AddToCart from './../cart/AddToCart'
+// import AddToCart from './../cart/AddToCart'
+import AddToInquiry from './../cart/AddToInquiry'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -83,7 +84,7 @@ export default function Products(props){
                 title={<Link to={"/product/"+product._id} className={classes.tileTitle}>{product.name}</Link>}
                 subtitle={<span className={classes.priceTitle}>$ {product.price}</span>}
                 actionIcon={
-                  <AddToCart item={product}/>
+                  <AddToInquiry item={product}/>
                 }
               />
             </GridListTile>

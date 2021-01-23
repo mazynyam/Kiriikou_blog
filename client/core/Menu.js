@@ -130,40 +130,36 @@ const Header = withRouter(({history}) =>{
     results: [],
     searched: false
     })
-    const handleChange = name => event => {
-      setValues({
-        ...values, [name]: event.target.value,
-      })
-    }
-    const search = () => {
-      if(values.search){
-        list({
-          search: values.search || undefined, category: values.category
-        }).then((data) => {
-          if (data.error) {
-            console.log(data.error)
-          } else {
-            setValues({...values, results: data, searched:true})
-          }
-        })
-      }
-    }
-    const enterKey = (event) => {
-      if(event.keyCode === 13){
-        event.preventDefault()
-        search()
-      }
-    }
+    // const handleChange = name => event => {
+    //   setValues({
+    //     ...values, [name]: event.target.value,
+    //   })
+    // }
+    // const search = () => {
+    //   if(values.search){
+    //     list({
+    //       search: values.search || undefined, category: values.category
+    //     }).then((data) => {
+    //       if (data.error) {
+    //         console.log(data.error)
+    //       } else {
+    //         setValues({...values, results: data, searched:true})
+    //       }
+    //     })
+    //   }
+    // }
+    // const enterKey = (event) => {
+    //   if(event.keyCode === 13){
+    //     event.preventDefault()
+    //     search()
+    //   }
+    // }
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  
-    // const handleProfileMenuOpen = (event) => {
-    //   setAnchorEl(event.currentTarget);
-    // };
   
     const handleMobileMenuClose = () => {
       setMobileMoreAnchorEl(null);
@@ -189,8 +185,24 @@ const Header = withRouter(({history}) =>{
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
+        {
+                auth.isAuthenticated() && (<span>
+                    <MenuItem>
+                    {auth.isAuthenticated().user.seller && (
+                      <Link to="/seller/shops"><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
+                    </MenuItem>
+                   <MenuItem>
+                    <Link to={"/user/" + auth.isAuthenticated().user._id}>
+                      <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>{auth.isAuthenticated().user.name}</Button>
+                    </Link>
+                   </MenuItem>
+                   <MenuItem>
+                    <Button color="inherit" onClick={() => {
+                      auth.clearJWT(() => history.push('/'))
+                    }}>Sign out</Button>
+                    </MenuItem>
+                </span>)
+              }
       </Menu>
     );
   
@@ -206,7 +218,7 @@ const Header = withRouter(({history}) =>{
         onClose={handleMobileMenuClose}
       > 
                {
-                auth.isAuthenticated() && (<span>
+                auth.isAuthenticated() && (<span style={{backgroundColor:'#213A57'}}>
                   {auth.isAuthenticated().user.seller && (
                   <Link to="/seller/shops"><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
                   <MenuItem >
@@ -233,35 +245,31 @@ const Header = withRouter(({history}) =>{
                   </IconButton>
                   <p>Sign out</p>
                 </MenuItem>
-                     {/* <IconButton
-                      edge="end"
-                      aria-label="account of current user"
-                      aria-controls={menuId}
-                      aria-haspopup="true"
-                      onClick={handleProfileMenuOpen}
-                      color="inherit"
-                    >
-                      <AccountCircle />
-                      
-                    </IconButton> */}
+                    
                 </span>)
               }
         
 
         {
-            !auth.isAuthenticated() && (<span>
+            !auth.isAuthenticated() && (<span color='primary'>
+              <MenuItem>
               <Link to="/user/signup">
                 <Button style={isActive(history, "/user/signup")}>Sign up
                 </Button>
               </Link>
+              </MenuItem>
+              <MenuItem>
               <Link to="/auth/signin">
                 <Button style={isActive(history, "/auth/signin")}>Sign In
                 </Button>
               </Link>
+              </MenuItem>
+              <MenuItem>
               <Link to="/business/register/new">
                 <Button style={isActive(history, "/business/register/new")}>Connect to Kiriikou
                 </Button>
               </Link>
+              </MenuItem>
             </span>)
           }
           
@@ -298,7 +306,8 @@ const Header = withRouter(({history}) =>{
           }
           {
                 auth.isAuthenticated() && (<span>
-                  {auth.isAuthenticated().user.seller && (<Link to="/seller/shops"><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
+                  {auth.isAuthenticated().user.seller && (
+                  <Link to="/seller/shops"><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
                   
                   <Link to={"/user/" + auth.isAuthenticated().user._id}>
                     <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>{auth.isAuthenticated().user.name}</Button>

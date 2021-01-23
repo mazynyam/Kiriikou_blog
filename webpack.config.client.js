@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const CURRENT_WORKING_DIR = process.cwd()
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     name: "browser",
@@ -56,7 +57,10 @@ const config = {
         ]
     },  plugins: [
           new webpack.HotModuleReplacementPlugin(),
-          new webpack.NoEmitOnErrorsPlugin()
+          
+        //   new HtmlWebpackPlugin({
+        //       favicon:'client/assets/images/favicon.ico'
+        //   })
       ],
       resolve: {
         extensions: [".tsx", ".ts", ".js", "scss"]

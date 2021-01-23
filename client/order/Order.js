@@ -168,13 +168,17 @@ export default function Order({match}) {
                 </Typography>
                 <Typography type="subheading" component="h3" className={classes.info} color="primary"><strong>{order.customer_name}</strong></Typography><br/>
                 <Typography type="subheading" component="h3" className={classes.info} color="primary">{order.customer_email}</Typography><br/>
+                <Typography type="subheading" component="h3" className={classes.info} color="primary">{order.customer_phone}</Typography><br/>
                 <br/>
                 <Divider/>
                 <br/>
                 <Typography type="subheading" component="h3" className={classes.itemShop} color="primary">{order.delivery_address.street}</Typography>
                 <Typography type="subheading" component="h3" className={classes.itemShop} color="primary">{order.delivery_address.city}, {order.delivery_address.state} {order.delivery_address.zipcode}</Typography>
                 <Typography type="subheading" component="h3" className={classes.itemShop} color="primary">{order.delivery_address.country}</Typography><br/>
-                <Typography type="subheading" component="h3" className={classes.thanks} color="primary">Thank you for shopping with us! <br/>You can track the status of your purchased items on this page.</Typography>
+                <Typography type="subheading" component="h3" className={classes.thanks} color="primary">
+                  Thank you for shopping with us! <br/>
+                  A Supplier will contact you to confim your order before being processed. <br />
+                You can track the status of your purchased items on this page.</Typography>
               </Card>
             </Grid>
         </Grid>

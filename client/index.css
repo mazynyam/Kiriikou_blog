@@ -70,7 +70,7 @@ code {
   justify-content: center;
   border-radius: 8px;
   height: 60px;
-  width: 35%;
+  /* width: 35%; */
 }
 /* Set a style for the submit/login button */
 .form-container .btn {
@@ -121,4 +121,10 @@ code {
 }
 .form-grid input{
   height: 40px;
+}
+
+@media only screen and (max-width:768px){
+  .MuiGrid-root{
+    display:block
+  }
 }

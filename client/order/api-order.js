@@ -1,4 +1,4 @@
-const create = async (params, credentials, order, token) => {
+const create = async (params, credentials, order) => {
   try {
     let response = await fetch('/api/orders/'+params.userId, {
         method: 'POST',
@@ -7,7 +7,7 @@ const create = async (params, credentials, order, token) => {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + credentials.t
         },
-        body: JSON.stringify({order: order, token:token})
+        body: JSON.stringify({order: order })
       })
       return response.json()
     }catch(err) {

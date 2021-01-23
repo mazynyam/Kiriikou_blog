@@ -211,17 +211,17 @@ export default function CartItems (props) {
         <div className={classes.checkout}>
           <span className={classes.total}>Total: <span className={classes.gtotal}>${getTotal()}</span></span>
           {!props.checkout && (auth.isAuthenticated()?
-            <Button color="secondary" variant="contained" onClick={openCheckout}>Checkout</Button>
+            <Button color="secondary" variant="contained" onClick={openCheckout}>Send Inquiry Now</Button>
             :
             <Link to="/auth/signin" className={classes.loginChk}>
-              <Button className={classes.continueChk}color="primary" variant="contained">Sign in to checkout</Button>
+              <Button className={classes.continueChk}color="primary" variant="contained"><i className='fa fa-chat'></i>Sign in to send inquiry</Button>
             </Link>)}
           <Link to='/' className={classes.continueBtn}>
             <Button className={classes.continueShp} variant="contained">Continue Shopping</Button>
           </Link>
         </div>
       </span>) :
-      <Typography variant="subtitle1" component="h3" color="primary">No items added to your cart.</Typography>
+      <Typography variant="subtitle1" component="h3" color="primary">No items added :)</Typography>
     }
     </Card>)
 }

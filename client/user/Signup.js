@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
 import { makeStyles } from '@material-ui/core/styles'
-import {create} from './api-user.js'
+import {create, sendEmail} from './api-user.js'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -77,6 +77,14 @@ export default function Signup() {
       } else {
         setValues({ ...values, error: '', open: true})
       }
+      sendEmail(user).then((data) =>{
+        if(!data){
+          setValues({error: data.error})
+        }
+        else{
+          console.log('Email sent successfully')
+        }
+      })
       
     })
   }   
@@ -108,7 +116,7 @@ export default function Signup() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Link to="/verify-email">
+          <Link to="/">
             <Button color="primary" autoFocus="autoFocus" variant="contained">
               Verify Account
             </Button>

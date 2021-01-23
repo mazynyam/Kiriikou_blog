@@ -47,7 +47,7 @@ const Login = (props) => {
 
   const {from} = props.location.state || {
     from: {
-      pathname: '/'
+      pathname: '/admin'
     }
   }
   const {redirectToReferrer} = values

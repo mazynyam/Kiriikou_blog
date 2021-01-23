@@ -8,7 +8,7 @@ class AdminPrivateRoute extends Component{
     
     return auth.isAuthenticated() ? (
       <Component  />
-    ) : (<Redirect to={{pathname:'/auth/admin/signin '}} />)
+    ) : (<Redirect to={{pathname:'/auth/admin/signin'}} />)
   }
 } 
 export default AdminPrivateRoute

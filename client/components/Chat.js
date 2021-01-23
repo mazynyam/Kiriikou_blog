@@ -1,61 +1,67 @@
 import React, {useEffect, useState} from 'react'
 import io from 'socket.io-client'
+import ChatLogin from './ChatLogin'
+import useLocalStorage from './hooks/useLocalStorage'
 import InfoBar from './InfoBar'
 import Input from './Input'
 import Messages from './Messages'
-import auth from '../auth/auth-helper'
-import { getUser } from '../chat/users'
+import config from '../../config/config'
 
+let socket;
 
 const Chat = ( ) => {
     const [ messages, setMessages] = useState([])
     const [ message, setMessage] = useState([])
-    const [name, setName] = useState('')
-    const [shop, setShop] = useState('')
+    const [ uuid, setId ] = useLocalStorage('id')
+    const [ name, setName ] = useLocalStorage('name')
 
-    let socket;
-    const ENDPOINT =`http://localhost:4000`
+    const ENDPOINT =  `localhost:${config.port}`
     
-    useEffect(() => {
-        socket = io(ENDPOINT);
+
+    socket = io(ENDPOINT)
+    useEffect(()=>{
+        socket = io(ENDPOINT)
+
+        setId(uuid)
         setName(name)
-        setShop(shop)
-        socket.emit('chat', { name, shop},()=>{
+        socket.emit('join',{ uuid, name }, ()=>{
+           
+        });
 
-        })
         return ()=>{
-            socket.emit('disconnect')
-            socket.off();
+            // socket.emit('disconnect')
+            socket.off()
         }
-    }, [ENDPOINT]);
+    }, [ENDPOINT, uuid, name]);
 
-    useEffect(() => {
+    useEffect(()=>{
         socket.on('message', (message)=>{
             setMessages([...messages, message])
-        }
-        )  
+        })
     },[messages])
-    const sendMessage = (event)=>{
-        event.preventDefault();
-        let userId =  props.user.id
-        let name = props.user.name
+    const sendMessage = e =>{
+        e.preventDefault()
         if(message){
-            socket.emit('sendMessage',{ 
-                message, 
-                userId, 
-                name }, setMessage(''));
+            socket.emit('sendMessage', message, ()=> setMessage(''))
         }
     }
     console.log(message, messages)
-    return (
-        <div className="chat-popup"  id="myForm">
+    const ChatMessage = ()=>{
+        return(
+        <div>
             <InfoBar />
-            <Messages messages={messages} name={name} />
-            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} /> 
+            <Messages messages={messages} setId={uuid} />
+            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+          </div>
+        )
+    }
+    return (
+        <div  className="chat-popup"  id="myForm">
+            uuid : <ChatMessage  /> 
+                ?
+                <ChatLogin onIdSubmit={setId}/>  
         </div>
     )
 }
-
-
 
 export default Chat;

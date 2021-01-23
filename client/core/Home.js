@@ -91,7 +91,6 @@ export default function Home(){
     )
   })
 
-  const [showInfo, setShowInfo]= useState(false)
   
     return (
 

@@ -13,7 +13,6 @@ export default function Input({message, setMessage, sendMessage}) {
             onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null} />
             <button type="button" className="btn" onClick={(event) => sendMessage(event)}>
                 <i className='fa fa-send'>
-                
                 </i>
             </button>
             </div>

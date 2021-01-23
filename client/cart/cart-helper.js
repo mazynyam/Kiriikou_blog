@@ -1,3 +1,5 @@
+// import sgmail from '@sendgrid/mail'
+
 const cart = {
     itemTotal() {
       if (typeof window !== "undefined") {
@@ -56,8 +58,32 @@ const cart = {
         localStorage.removeItem('cart')
         cb()
       }
-    }
+    },
+    // sendInquiryMessage(){
+    //   let cart = []
+    //   if (typeof window !== "undefined") {
+    //     if (localStorage.getItem('cart')) {
+    //       cart = JSON.parse(localStorage.getItem('cart'))
+    //     }
+    //   }
+    //   const msg = {
+    //     from:`${config.email_address}`,
+    //     to:user.email,
+    //     subject:'Kiriikou - Order Receipt',
+    //     text:`Thank you for your order on Kiriikou.com.
+    //     ${checkoutDetails.products}`,
+    //     html:`
+    //     <h1>Hello ${user.name}</h1>
+    //     <p>
+    //     Thank you for registering with us.
+    //     Please click on the link to verify your account.
+    //     http://${req.headers.host}/verify-email?${user.emailToken}
+    //     </p>
+    //     `
+      
+    //     }
+    //   sgmail.send(msg)
+    // }
   }
   
   export default cart
-  

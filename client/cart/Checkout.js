@@ -50,6 +50,7 @@ export default function Checkout (){
       products: cart.getCart(),
       customer_name: user.name,
       customer_email:user.email,
+      customer_phone: user.phone,
       delivery_address: { street: '', city: '', state: '', zipcode: '', country:''}
     },
     error: ''

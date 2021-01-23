@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {makeStyles} from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
 import AddCartIcon from '@material-ui/icons/AddShoppingCart'
 import DisabledCartIcon from '@material-ui/icons/RemoveShoppingCart'
 import cart from './cart-helper.js'
@@ -29,13 +30,19 @@ export default function AddToCart(props) {
       setRedirect({redirect:true})
     })
   }
+  const makeInquiry = () =>{
+    cart.addItem(props.item, ()=>{
+      setRedirect ({redirect: true})
+    })
+  }
     if (redirect) {
       return (<Redirect to={'/cart'}/>)
     }
     return (<span>
       {props.item.quantity >= 0 ?
         <IconButton color="secondary" dense="dense" onClick={addToCart}>
-          <AddCartIcon className={props.cartStyle || classes.iconButton}/>
+          {/* <AddCartIcon className={props.cartStyle || classes.iconButton}/> */}
+          <Typography ><i className='fa fa-message'></i> Contact Supplier</Typography>
         </IconButton> :
         <IconButton disabled={true} color="secondary" dense="dense">
           <DisabledCartIcon className={props.cartStyle || classes.disabledIconButton}/>

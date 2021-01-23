@@ -14,6 +14,19 @@ const signin = async (user) => {
       console.log(err)
     }
   }
+const sendEmail = async(user)=>{
+  try{
+    let response = await fetch('/api/users',{
+      method: 'POST',
+      url: req.headers.host,
+      body:JSON.parse(user)
+    })
+    return await response.json()
+  }
+  catch(error){
+    console.log(error)
+  }
+}
 const adminSignin = async (user) => {
     try {
       let response = await fetch('/auth/admin/signin/', {
@@ -43,5 +56,6 @@ const adminSignin = async (user) => {
   export {
     signin,
     adminSignin,
-    signout
+    signout,
+     sendEmail
   }

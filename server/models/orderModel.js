@@ -21,6 +21,11 @@ const OrderSchema = new mongoose.Schema({
     match: [/.+\@.+\..+/, 'Please fill a valid email address'],
     required: 'Email is required'
   },
+  customer_phone:{
+    type:String,
+    trim:true,
+    required:true
+  },
   delivery_address: {
     street: {type: String, required: 'Street is required'},
     city: {type: String, required: 'City is required'},

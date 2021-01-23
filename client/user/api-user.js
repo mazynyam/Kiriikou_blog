@@ -14,7 +14,30 @@ const create = async (user) => {
     console.log(err)
   }
 }
-
+// const verifyEmail = async(data)=>{
+//   try {
+//     let response = await fetch('/api/users', {
+//       method:'POST',
+//       url:'/verify-email',
+//       data
+//     })
+//   } catch (error) {
+    
+//   }
+// }
+const sendEmail = async(user)=>{
+  try{
+    let response = await fetch('/api/users',{
+      method: 'POST',
+      url: req.headers.host,
+      body:JSON.parse(user)
+    })
+    return await response.json()
+  }
+  catch(error){
+    console.log(error)
+  }
+}
 const list = async (signal) => {
   try {
     let response = await fetch('/api/users/', {
@@ -101,5 +124,6 @@ export {
   read,
   update,
   remove,
-  stripeUpdate
+  stripeUpdate,
+   sendEmail
 }

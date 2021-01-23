@@ -1,3 +1,5 @@
+import favicon from './client/assets/images/kik.png'
+
 export default ({markup, css, name}) => {
     return `<!doctype html>
       <html lang="en">
@@ -10,7 +12,7 @@ export default ({markup, css, name}) => {
           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
           <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
           
-          <link rel="shortcut icon" href="/client/assets/images/favicon.ico">
+          <link rel="shortcut icon" href='${favicon}'>
            <link rel="apple-touch-icon" sizes="180x180" href="/client/assets/images/apple-touch-icon.png">
            <link rel="icon" type="image/png" sizes="32x32" href="/client/assets/images/favicon-32x32.png">
           <link rel="icon" type="image/png" sizes="16x16" href="/client/assets/images/favicon-16x16.png">

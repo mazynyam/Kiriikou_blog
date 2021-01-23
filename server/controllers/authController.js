@@ -24,6 +24,9 @@ const signin = async (req, res) => {
           error:'Not verified, Please verify your account'
         })
       }
+      // if(user.isAdmin === true){
+      //   return res.redirect('/admin')
+      // }
 
       const token = jwt.sign({
         _id: user._id

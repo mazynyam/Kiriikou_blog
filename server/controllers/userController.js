@@ -9,34 +9,14 @@ import crypto from 'crypto'
 import nodemailer from 'nodemailer'
 import {signin} from './../../client/auth/api-auth'
 
+const sgMail = require('@sendgrid/mail')
+
 const myStripe = stripe(config.stripe_test_secret_key)
 sgmail.setApiKey(config.sendgrid_api_key)
 const create = async (req, res) => {
   const user = new User(req.body)
-    
     try {
       await user.save()
-      let transporter = nodemailer.createTransport({service:'Sendgrid', auth: {user: config.SENDGRID_USERNAME, pass:config.SENDGRID_PASSWORD }})
-      const msg = {
-        from:`${config.email_address}`,
-        to:user.email,
-        subject:'Kiriikou - Verify your email',
-        text:`Thank you for registering with us.
-        Please click on the link to verify your account.
-        http://${req.headers.host}/verify-email?${token.emailToken}`,
-        html:`
-        <h1>Hello ${user.name}</h1>
-        <p>
-        Thank you for registering with us.
-        Please click on the link to verify your account.
-        http://${req.headers.host}/verify-email?${user.emailToken}
-        </p>
-        `
-      
-        }
-      transporter.sendMail(msg, function(err){
-        res.status(200).json({msg:'A verification email has been sent to ' +user.email}) 
-    })
       return res.status(200).json({
         message: "Successfully signed up!"
       })
@@ -45,9 +25,33 @@ const create = async (req, res) => {
         error: errorHandler.getErrorMessage(err)
       })
     }
-
-  }
-
+}
+const sendEmail = async(req, res, next)=>{
+  const msg = {
+    from:`${config.email_address}`,
+    to:user.email,
+    subject:'Kiriikou - Verify your email',
+    text:`Thank you for registering with us.
+    Please click on the link to verify your account.
+    http://${req.headers.host}/verify-email?${token.emailToken}`,
+    html:`
+    <h1>Hello ${user.name}</h1>
+    <p>
+    Thank you for registering with us.
+    Please click on the link to verify your account.
+    http://${req.headers.host}/verify-email?${user.emailToken}
+    </p>
+    `
+    }
+    sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent')
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
 const resetPassword = async(req, res, next)=>{
   async.waterfall([
     function(done) {
@@ -108,33 +112,23 @@ const verifyEmail = async(req, res, next)=>{
   try {
     const user = await User.findOne({ emailToken: req.query.token })
     if(!user){
-      req.json({'error': 'Token is invalid, Please contact for assistance'})
-      return res.redirect('/')
+      res.json({'error': 'Token is invalid, Please contact for assistance'})
+      // return res.redirect('/')
     }
     user.emailToken = null;
     user.isVerified = true;
     await user.save()
-    // signin(user, (err)=>{
-    //   if(err) return next(err)
-    //   res.json('success', `Welcome to Kiriikou B2B Ecommerce ${user.name}`)
-    //   const rediretUrl = req.session.redirectTo || '/';
-    //   delete req.session.redirectTo;
-    //   res.redirect(rediretUrl)
-    // })
-    await req.signin(user).then((data) => {
+    signin(user).then((data) => {
       if (!data) {
         next()
       } else {
         const redirectUrl = req.session.redirectTo || '/';
-        delete req.session.redirectTo
         res.redirect(redirectUrl)
       }
     })
 
   } catch (error) {
     console.log(error)
-    req.flash('error', 'Something went wrong, Please contact for assistance')
-    req.redirect('/')
   }
 }
 /**
@@ -312,5 +306,6 @@ export default {
   stripeCustomer,
   createCharge,
   verifyEmail,
-  resetPassword 
+  resetPassword,
+  sendEmail
 }

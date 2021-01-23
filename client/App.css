@@ -1,8 +1,10 @@
 
 .sitewrapper {
-  position: absolute;
- width: 100%;
+  position: fixed;
+  width: 100%;
+  bottom:0;
 }
+
 #srcCard {
 margin-top: 0px;
 text-align: center;
@@ -19,7 +21,8 @@ width:423px;
   color:rgb(193, 199, 204); 
   height:30;
   width: 100%;
-font-size:11;
+  font-size:11;
+  bottom:0;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 #copybar{
@@ -476,9 +479,8 @@ body{
     background-color:#17293d;
     margin: 0px auto;
     color:rgb(193, 199, 204);
-    height:30;
-    position: fixed;  
-    bottom: 0; 
+    /* height:30; */
+    /* position: fixed;   */
     width: 100%;
     font-size:11;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

@@ -12,6 +12,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import AddToCart from './../cart/AddToCart'
+import AddToInquiry from './../cart/AddToInquiry'
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
@@ -75,7 +76,6 @@ const useStyles = makeStyles(theme => ({
     color:"#ACD523"
   },
   cartButton:{
-    
     color:"#ACD523"
   },
   productTitle: {
@@ -129,12 +129,12 @@ export default function Suggestions (props) {
                   <div className={classes.controls}>
                     <Typography type="subheading" component="h3" className={classes.price} color="primary">$ {item.price}</Typography>
                       <span className={classes.actions}>
-                        <Link to={'/product/'+item._id}>
+                        <Link style={{ textDecoration:"none"}} to={'/product/'+item._id}>
                           <IconButton color="secondary" dense="dense">
                             <ViewIcon className={classes.iconButton}/>
                           </IconButton>
                         </Link>
-                        <AddToCart className={classes.cartButton} item={item}/>
+                        <AddToInquiry className={classes.iconButton} item={item}/>
                       </span>
                     </div>
                   </div>

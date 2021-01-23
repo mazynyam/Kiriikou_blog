@@ -1,7 +1,6 @@
 import express from 'express'
 import session from 'express-session'
 import path from 'path'
-import auth from './../client/auth/auth-helper'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import compress from 'compression'
@@ -19,7 +18,7 @@ import Chat from './models/chatModel'
 // modules for server side rendering
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-// import { renderToStringAsync } from 'react-async-ssr'
+
 import MainRouter from './../client/MainRouter'
 import {  StaticRouter , Switch} from 'react-router-dom'
 import config from './../config/config'
@@ -30,13 +29,11 @@ import theme from './../client/theme'
 //comment out before building for production
 import devBundle from './devBundle'
 
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./../client/chat/users')
-
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
 
-const server = require('http').createServer(app)
-const io = require('socket.io')(server)
+
+
 //comment out before building for production
 devBundle.compile(app)
 
@@ -58,29 +55,7 @@ app.use(session({
 }))
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
-io.on('connection', socket => {
-  console.log('New connection made!');
-  socket.on('chat', ({name, shop}, callback)=>{
-    const { error, user} = addUser({ id: auth.isAuthenticated().user._id || socket.id, name: auth.isAuthenticated().user.name || 'Anonymous', shop})
-    if(error) return callback(error);
 
-    socket.emit('message', {user:'Kiriikou', text:`Welcome to Kiriikou Support`})
-    socket.broadcast.to(user.shop).emit('message', { user:'admin', text:`${user.name} has joined!`})
-    socket.join(user.shop)
-    callback();
-  });
-
-  socket.on('sendMessage',(message, callback) => {
-    const user = getUser(socket.id)
-    io.to(user.shop).emit('message', { user: auth.isAuthenticated().user.name, text:message })
-    callback()
-
-  });
-
-  socket.on('disconnect', ()=>{
-    console.log('User has left')
-  })
-})
 
 // mount routes
 app.use('/', userRoutes)
@@ -116,8 +91,6 @@ app.get('*', (req, res) => {
       css: css,
       name: name
     }))
-  
-    
 })
 
 // Catch unauthorised errors
