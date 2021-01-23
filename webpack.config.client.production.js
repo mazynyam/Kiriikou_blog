@@ -1,5 +1,6 @@
 const path = require('path')
 const CURRENT_WORKING_DIR = process.cwd()
+const webpack = require('webpack')
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = {
     mode: "production",
