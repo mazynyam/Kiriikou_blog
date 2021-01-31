@@ -24,10 +24,7 @@ const signin = async (req, res) => {
           error:'Not verified, Please verify your account'
         })
       }
-      // if(user.isAdmin === true){
-      //   return res.redirect('/admin')
-      // }
-
+      
       const token = jwt.sign({
         _id: user._id
       }, config.jwtSecret)
@@ -72,8 +69,7 @@ const hasAuthorization = (req, res, next) => {
 const AdminSignin = async(req, res, next)=>{
   try {
     let user = await User.findOne({
-        "email": req.body.email,
-        "isAdmin":req.body.isAdmin
+        "email": req.body.email
       })
 
       if (!user)
@@ -86,9 +82,12 @@ const AdminSignin = async(req, res, next)=>{
           error: "Email and password don't match."
         })
       }
-      if(!user.authenticate(req.body.isAdmin)){
-        return res.status('401').send({
-          error:'Not authorized'
+      if(req.user.isAdmin == true){
+        next()
+      }
+      else{
+        res.status(403).send({
+          error:`Can't access this, You are not an admin`
         })
       }
 

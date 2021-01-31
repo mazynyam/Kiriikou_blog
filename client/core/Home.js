@@ -8,17 +8,20 @@ import Categories from './../product/Categories'
 import  {SLIDE_INFO} from '../components/SlideConstant'
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap'
 import RequestForQuotation from './../components/RequestForQuotation'
-
-
+import { useHistory, useLocation} from 'react-router-dom';
+import {
+  CPagination
+} from '@coreui/react'
+import Footer from '../core/Footer'
+import Menu from '../core/Menu'
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     margin: 30,
+    marginBottom:38,
   },
   
-  
- 
 }));
 
 
@@ -29,8 +32,19 @@ export default function Home(){
   const [suggestions, setSuggestions] = useState([])
   const [animating, setAnimating] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
+  const history = useHistory()
+  const queryPage = useLocation().search.match(/page=([0-9]+)/, '')
+  const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
+  const [page, setPage] = useState(currentPage)
   const content = SLIDE_INFO;
  
+  const pageChange = newPage => {
+    currentPage !== newPage && history.push(`/products?page=${newPage}`)
+  }
+
+  useEffect(() => {
+    currentPage !== page && setPage(currentPage)
+  },[currentPage, page])
   
   useEffect(() => {
     const abortController = new AbortController()
@@ -91,28 +105,29 @@ export default function Home(){
     )
   })
 
-  
+
     return (
 
+<>
           <div className={classes.root}>
             <Grid container spacing={2}>
               <Grid>
                   <Search categories={categories}/>
                 </Grid>
-                <Grid item xs={2} sm={2}>    
+                <Grid item xs={3} sm={1} md={1} lg={2} xl={1}>    
                 <h6 id="moneycolour"><span className="fa fa-money fa-lg" id="sellcolour"></span> Make money on Kiriikou</h6>
                 </Grid>
-                <Grid item xs={2} sm={2}>
+                <Grid item xs={3} sm={1} md={1} lg={2} xl={1} >
                 <h6 id="trust"><span className="fa fa-shopping-bag fa-lg" id="trt"></span> Shop with trust</h6>
                 </Grid>
-                <Grid item xs={2} sm={2}>
+                <Grid item xs={3} sm={1} md={1} lg={2} xl={1} >
                 <h6 id="support"><span className="fa fa-clock-o fa-lg" id="supp"></span>24/7 Support</h6>
                 </Grid>
-                <Grid item xs={2} sm={2}>
+                <Grid item xs={3} sm={1} md={1} lg={2} xl={1} >
                 <h6 id="payment"><span className="fa fa-credit-card fa-lg" id="paynt"></span>Secure Payment</h6>
                 </Grid>
               
-                <Grid item xs={8}>
+                <Grid item xs={12} sm={12}  md={6} lg={8} xl={6}>
                   <Carousel 
                   activeIndex={activeIndex}
                   next={next}
@@ -125,20 +140,31 @@ export default function Home(){
                 </Carousel>
               
               </Grid>
-                  <Grid  item xs={4} sm={4}>
+                  <Grid  item xs={12} sm={12}  md={6} lg={4} xl={4}>
                     <Suggestions  products={suggestions} title={suggestionTitle}/>
                   </Grid>
                   
-                    <Grid item xs={12}>
+                    <Grid item  xs={12} sm={12}  md={12} lg={12} xl={12}>
                       <Categories categories={categories}/>
                     </Grid>
                     
-            
+                    <CPagination
+                      activePage={page}
+                      onActivePageChange={pageChange}
+                      pages={5}
+                      doubleArrows={false} 
+                      align="center"
+                    />
             </Grid>
+            <div>
             <RequestForQuotation />
-      
-        </div>
+            </div>
 
+           
+        </div>
+      <Footer />
+         
+</>
 
     )
 }

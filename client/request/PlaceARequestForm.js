@@ -13,7 +13,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-evenly"
 
 },
-
+menu: {
+  width: 200,
+},
 sellproduct: {
     fontSize: 40,
     marginLeft: 30,
@@ -166,27 +168,31 @@ export default function PlaceARequestForm() {
       town:'',
       phone:'',
       email:'',
+      product_name:'',
+      category:'',
       quantity:'',
       description:'',
       customization:'',
       image:'',
-      error: ''
+      error: '',
+      unit:'',
     })
     const handleChange = name => event => {
       setValues({ ...values, [name]: event.target.value })
     }
     const clickSubmit = () => {
       let requestData = new FormData()
-      values.name && productData.append('name', values.name)
-      values.country && productData.append('country', values.country)
-      values.city && productData.append('city', values.city)
-      values.town && productData.append('town', values.town)
-      values.phone && productData.append('phone', values.phone)
-      values.email && productData.append('email', values.email)
-      values.quantity && productData.append('quantity', values.quantity)
-      values.description && productData.append('description', values.description)
-      values.customization && productData.append('customization', values.customization)
-      values.image && productData.append('image', values.image)
+      values.name && requestData.append('name', values.name)
+      values.country && requestData.append('country', values.country)
+      values.city && requestData.append('city', values.city)
+      values.town && requestData.append('town', values.town)
+      values.phone && requestData.append('phone', values.phone)
+      values.email && requestData.append('email', values.email)
+      values.quantity && requestData.append('quantity', values.quantity)
+      values.description && requestData.append('description', values.description)
+      values.customization && requestData.append('customization', values.customization)
+      values.image && requestData.append('image', values.image)
+      values.unit && requestData.append('unit', values.unit)
   
       create({
         requestId: match.params.requestId,
@@ -203,14 +209,24 @@ export default function PlaceARequestForm() {
     return (
         <div>
           <Grid container spacing={2}>
-            <Grid item xs={8} sm={8}>
+            <Grid item xs={9} sm={9}>
             <Box borderBottom={1} className={classes.boxfield}>
                 <Typography type='headline' className={classes.sellproduct} component='h2'>Request For Quotation</Typography>
               </Box>
               <Card className={classes.card}>
           
-              <TextField className={classes.textField} type="text" id="productName" name="productName" label='Product Name' required />
-              <TextField id="select" label="Category" select className={classes.textField} required>
+              <TextField className={classes.textField} type="text" id="product_name" name="product_name" label='Product Name' required onChange={handleChange('product_name')} />
+              <TextField id="select" 
+                label="Category" 
+                select 
+                className={classes.textField} 
+                required onChange={handleChange('category')}
+                SelectProps={{
+                  MenuProps: {
+                    className: classes.menu,
+                  },
+                }}
+                >
 
                           <MenuItem value="Others">Others</MenuItem>
                               <MenuItem value="Agriculture">Agriculture</MenuItem>
@@ -224,11 +240,24 @@ export default function PlaceARequestForm() {
                               <MenuItem value="Home & Decor">Home & Decor</MenuItem>
                               <MenuItem value="Phones & Computers">Phones & Computers</MenuItem>
               </TextField> <br />
-                  <TextField className={classes.textField} type="number" id="quantity" name="quantity" label='Quantity' required min={1} /><br /> <br />
-                  <TextField className={classes.textField} type="text" id="description" name="description" label='Product Description' required  multiline rows={9} variant="outlined"/><br /> <br />
-                  <TextField className={classes.textField} type="text" id="customization" name="customization" label='Product Customization' placeholder='You can add product customization here if any'   multiline rows={9} variant="outlined"/><br /> <br />
+                  <TextField className={classes.textField} type="number" id="quantity" name="quantity" label='Quantity' required min={1} max={500} onChange={handleChange('quantity')} />
+                  <TextField id="select" label="Unit" select 
+                   className={classes.textField}
+                    required onChange={handleChange('unit')}
+                    SelectProps={{
+                      MenuProps: {
+                        className: classes.menu,
+                      },
+                    }}>
+                  <MenuItem value="Pieces">Pieces</MenuItem>
+                      <MenuItem value="Grams">Grams</MenuItem>
+                      <MenuItem value="Kilograms">Kilograms</MenuItem>
+                      <MenuItem value="Pounds">Pounds</MenuItem>
+                  </TextField> <br />
+                  <TextField className={classes.textField} type="text" id="description" name="description" label='Product Description' required  multiline rows={9} variant="outlined" onChange={handleChange('description')}/>
+                  <TextField className={classes.textField} type="text" id="customization" name="customization" label='Product Customization' placeholder='You can add product customization here if any'   multiline rows={9} variant="outlined" onChange={handleChange('customization')}/><br /> <br />
                     <input accept="image/*" onChange={handleChange('image')} value={values.image ? values.image.name : ''} className={classes.input} id="icon-button-file" type="file"/><br /><br />
-                    <label htmlFor="icon-button-file">
+                    <label htmlFor="icon-button-file" onChange={handleChange('image')}>
                         <Button variant="contained" color="secondary" component="span">
                           Add Pictures for actual items 
                         <FileUpload/>
@@ -239,12 +268,12 @@ export default function PlaceARequestForm() {
               </Card>
            
             </Grid>
-            <Grid item xs={4} sm={4}>
+            <Grid item xs={3} sm={9}>
               <Card className={classes.card}>
-              <Typography variant='contained'  color='textPrimary' component='h2'>This a  Special Feature</Typography>
+              <Typography  color='textPrimary' component='h2'>This a  Special Feature</Typography>
               <Typography component='h3' className={classes.title}>Kiriikou.com takes this special request directly from their cherished users to source for products not featured on the site. </Typography>
               <h5>Kindly follow the steps to complete a request</h5>
-              <ul>
+              <ul className='table table-bordered'>
                 <li>Type a name of the product you want to request for</li>
                 <li>Choose a category from the list provided</li>
                 <li>Enter the quantity you want to request for</li>

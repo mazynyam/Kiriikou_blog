@@ -145,5 +145,6 @@ export default {
   read,
   update,
   isOwner,
-  remove
+  remove,
+
 }

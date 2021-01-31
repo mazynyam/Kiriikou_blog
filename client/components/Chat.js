@@ -6,33 +6,35 @@ import InfoBar from './InfoBar'
 import Input from './Input'
 import Messages from './Messages'
 import config from '../../config/config'
+import queryString from 'query-string'
 
 let socket;
 
 const Chat = ( ) => {
     const [ messages, setMessages] = useState([])
-    const [ message, setMessage] = useState([])
-    const [ uuid, setId ] = useLocalStorage('id')
-    const [ name, setName ] = useLocalStorage('name')
+    const [ message, setMessage] = useState('')
+    const [ room, setRoom ] = useState('')
+    const [ name, setName ] = useState('')
 
     const ENDPOINT =  `localhost:${config.port}`
     
 
     socket = io(ENDPOINT)
     useEffect(()=>{
+        const { name, room } = queryString.parse(location.search)
         socket = io(ENDPOINT)
 
-        setId(uuid)
+        setRoom(room)
         setName(name)
-        socket.emit('join',{ uuid, name }, ()=>{
+        socket.emit('join',{ room, name }, ()=>{
            
         });
 
         return ()=>{
-            // socket.emit('disconnect')
-            socket.off()
+            socket.emit('disconnect')
+            // socket.off()
         }
-    }, [ENDPOINT, uuid, name]);
+    }, [ENDPOINT, location.search]);
 
     useEffect(()=>{
         socket.on('message', (message)=>{
@@ -50,16 +52,14 @@ const Chat = ( ) => {
         return(
         <div>
             <InfoBar />
-            <Messages messages={messages} setId={uuid} />
+            <Messages messages={messages}  />
             <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
           </div>
         )
     }
     return (
         <div  className="chat-popup"  id="myForm">
-            uuid : <ChatMessage  /> 
-                ?
-                <ChatLogin onIdSubmit={setId}/>  
+                <ChatMessage />
         </div>
     )
 }

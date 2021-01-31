@@ -9,7 +9,7 @@ import Icon from '@material-ui/core/Icon'
 import Avatar from '@material-ui/core/Avatar'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
-
+import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3'
 import auth from './../auth/auth-helper'
 import FileUpload from '@material-ui/icons/AddPhotoAlternate'
 import { makeStyles } from '@material-ui/core/styles'
@@ -17,7 +17,7 @@ import {read, update} from './api-shop.js'
 import {Redirect} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import MyProducts from './../product/MyProducts'
-
+import kik from './../assets/images/kik.png'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -79,8 +79,28 @@ export default function EditShop ({match}) {
     image: '',
     redirect: false,
     error: '',
-    id: ''
+    id: '',
+    amount: Number
   })
+  const Config = {
+    public_key:'FLWSECK_TEST-e53a8f6a4c7a94b1801cd8e12256d757-X',
+    tx_ref:Date.now(),
+    amount: 100,
+    currency:'USD, GHS',
+    payment_options:'card, ghanamobilemoney',
+    customer:{
+      email:'phinehas499@gmail.com',
+      phonenumber:'0244789087',
+      name:'User name'
+    },
+    customizations:{
+      title:'Business Registration',
+      description:'Payment for business registration',
+      logo:kik
+    }
+  };
+
+  // const handlePayment = useFlutterwave(fwConfig)
   const jwt = auth.isAuthenticated()
   useEffect(() => {
     const abortController = new AbortController()
@@ -146,6 +166,15 @@ export default function EditShop ({match}) {
     const value = name === 'identity_card_back' ? event.target.files[0] : event.target.value
     setValues({...values, [name]: value})
   }
+  const fwConfig = {
+    ...Config,
+    text: 'Pay For Business Promotion',
+    callback: (response) => {
+       console.log(response);
+      closePaymentModal() // this will close the modal programmatically
+    },
+    onClose: () => {},
+  };
   
     const logoUrl = values.id
           ? `/api/shops/logo/${values.id}?${new Date().getTime()}`
@@ -254,6 +283,7 @@ export default function EditShop ({match}) {
                 
             </CardContent>
             <CardActions>
+              <FlutterWaveButton color='primary' variant='contained' className={classes.submit} {...fwConfig} />
               <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Update</Button>
             </CardActions>
           </Card>

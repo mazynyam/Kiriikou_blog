@@ -11,6 +11,7 @@ import './scss/style.scss'
 import './components/chatbutton.css'
 import './components/infobar.css'
 import './components/Message.css'
+import './components/ChatLogin.css'
 import './admin/Admin.css'
 import './admin/navbar/Navbar.css'
 import './admin/sidebar/Sidebar.css'
@@ -27,11 +28,9 @@ const App = () => {
   return (
   <BrowserRouter>
       <ThemeProvider theme={theme}>
-          <Header/>
-          <MainRouter/>
-        <div id="sitewrapper" >
-          <Footer/>
-      </div>
+        <Header />
+          <MainRouter />
+
       </ThemeProvider>
   </BrowserRouter>
 )}

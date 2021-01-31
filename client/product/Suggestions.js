@@ -18,14 +18,13 @@ const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
     padding: theme.spacing(1),
     paddingBottom: 24,
-    backgroundColor: '#80808024'
+    backgroundColor: '#f4f4f4'
   }),
   title: {
     margin: `${theme.spacing(4)}px 0 ${theme.spacing(2)}px`,
     color: theme.palette.openTitle,
     color:'#ACD523',
     fontSize: '2.0em',
-
     fontFamily:"Arial Black",
     fontWeight:"bolder",
   },
@@ -73,7 +72,7 @@ const useStyles = makeStyles(theme => ({
   iconButton: {
     width: '28px',
     height: '28px',
-    color:"#ACD523"
+    color:"#0ff0f2"
   },
   cartButton:{
     color:"#ACD523"
@@ -95,7 +94,7 @@ const useStyles = makeStyles(theme => ({
     display: 'inline',
     lineHeight: '3',
     paddingLeft: '8px',
-    color: theme.palette.text.secondary
+    color: theme.palette.text.primary
   }
 }))
 
@@ -129,11 +128,6 @@ export default function Suggestions (props) {
                   <div className={classes.controls}>
                     <Typography type="subheading" component="h3" className={classes.price} color="primary">$ {item.price}</Typography>
                       <span className={classes.actions}>
-                        <Link style={{ textDecoration:"none"}} to={'/product/'+item._id}>
-                          <IconButton color="secondary" dense="dense">
-                            <ViewIcon className={classes.iconButton}/>
-                          </IconButton>
-                        </Link>
                         <AddToInquiry className={classes.iconButton} item={item}/>
                       </span>
                     </div>

@@ -1,84 +1,60 @@
 import React from 'react';
+import ListProducts from './product/ListProducts';
+import Home from './core/Home';
+import Users from './user/Users'
+import Admin from './admin/Admin'
+import Signup from './user/Signup'
+import Signin from './auth/Signin'
+import EditProfile from './user/EditProfile'
+import Profile from './auth/PrivateRoute'
+import NewShop from './shop/Shops'
+import Shops from './shop/MyShops'
+import MyShops from './shop/Shop'
+import Shop from './shop/EditShop'
+import EditShop from './product/NewProduct'
+import NewProduct from './product/EditProduct'
+import EditProduct from './product/Product'
+import Product from './cart/Inquiry'
+import Inquiry from './user/StripeConnect'
+import StripeConnect from './order/ShopOrders'
+import ShopOrders from './order/Order'
+import Order from './request/PlaceARequestForm'
+import PlaceARequestForm from './components/VerifyEmail'
+import VerifyEmail from './admin/Login'
+import Login from './admin/TheContent'
+import Register from './views/pages/register/Register'
 
-// const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
-// const Tables = React.lazy(() => import('./views/base/tables/Tables'));
-
-// const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'));
-// const Cards = React.lazy(() => import('./views/base/cards/Cards'));
-// const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'));
-// const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'));
-// const BasicForms = React.lazy(() => import('./views/base/forms/BasicForms'));
-
-// const Jumbotrons = React.lazy(() => import('./views/base/jumbotrons/Jumbotrons'));
-// const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'));
-// const Navbars = React.lazy(() => import('./views/base/navbars/Navbars'));
-// const Navs = React.lazy(() => import('./views/base/navs/Navs'));
-// const Paginations = React.lazy(() => import('./views/base/paginations/Pagnations'));
-// const Popovers = React.lazy(() => import('./views/base/popovers/Popovers'));
-// const ProgressBar = React.lazy(() => import('./views/base/progress-bar/ProgressBar'));
-// const Switches = React.lazy(() => import('./views/base/switches/Switches'));
-
-// const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'));
-// const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'));
-// const BrandButtons = React.lazy(() => import('./views/buttons/brand-buttons/BrandButtons'));
-// const ButtonDropdowns = React.lazy(() => import('./views/buttons/button-dropdowns/ButtonDropdowns'));
-// const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'));
-// const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
-import Charts from'./views/charts/Charts'
-import Dashboard from './views/dashboard/Dashboard'
-// const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
-// const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
-// const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
-// const Alerts = React.lazy(() => import('./views/notifications/alerts/Alerts'));
-// const Badges = React.lazy(() => import('./views/notifications/badges/Badges'));
-// const Modals = React.lazy(() => import('./views/notifications/modals/Modals'));
-// const Colors = React.lazy(() => import('./views/theme/colors/Colors'));
-// const Typography = React.lazy(() => import('./views/theme/typography/Typography'));
-// const Widgets = React.lazy(() => import('./views/widgets/Widgets'));s
-import Users from './views/users/Users'
-import User from './views/users/User'
+// const Cart = React.lazy(()=> import('./cart/Cart'))
 
 const routes = [
-  { path: '/kiriikou-admin', exact: true, name: 'Home' },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  // { path: '/theme', name: 'Theme', component: Colors, exact: true },
-  // { path: '/theme/colors', name: 'Colors', component: Colors },
-  // { path: '/theme/typography', name: 'Typography', component: Typography },
-  // { path: '/base', name: 'Base', component: Cards, exact: true },
-  // { path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
-  // { path: '/base/cards', name: 'Cards', component: Cards },
-  // { path: '/base/carousels', name: 'Carousel', component: Carousels },
-  // { path: '/base/collapses', name: 'Collapse', component: Collapses },
-  // { path: '/base/forms', name: 'Forms', component: BasicForms },
-  // { path: '/base/jumbotrons', name: 'Jumbotrons', component: Jumbotrons },
-  // { path: '/base/list-groups', name: 'List Groups', component: ListGroups },
-  // { path: '/base/navbars', name: 'Navbars', component: Navbars },
-  // { path: '/base/navs', name: 'Navs', component: Navs },
-  // { path: '/base/paginations', name: 'Paginations', component: Paginations },
-  // { path: '/base/popovers', name: 'Popovers', component: Popovers },
-  // { path: '/base/progress-bar', name: 'Progress Bar', component: ProgressBar },
-  // { path: '/base/switches', name: 'Switches', component: Switches },
-  // { path: '/base/tables', name: 'Tables', component: Tables },
-  // { path: '/base/tabs', name: 'Tabs', component: Tabs },
-  // { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
-  // { path: '/buttons', name: 'Buttons', component: Buttons, exact: true },
-  // { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
-  // { path: '/buttons/button-dropdowns', name: 'Dropdowns', component: ButtonDropdowns },
-  // { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
-  // { path: '/buttons/brand-buttons', name: 'Brand Buttons', component: BrandButtons },
-  { path: '/charts', name: 'Charts', component: Charts },
-  // { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
-  // { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
-  // { path: '/icons/flags', name: 'Flags', component: Flags },
-  // { path: '/icons/brands', name: 'Brands', component: Brands },
-  // { path: '/notifications', name: 'Notifications', component: Alerts, exact: true },
-  // { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
-  // { path: '/notifications/badges', name: 'Badges', component: Badges },
-  // { path: '/notifications/modals', name: 'Modals', component: Modals },
-  // { path: '/notifications/toaster', name: 'Toaster', component: Toaster },
-  // { path: '/widgets', name: 'Widgets', component: Widgets },
+  {path:'/', exact:true, name:'Home', component:Home},
+  // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/users', exact: true,  name: 'Users', component: Users },
-  { path: '/users/:id', exact: true, name: 'User Details', component: User }
+  { path: '/admin/users', exact: true,  name: 'Users', component: Users },
+  { path: '/user/signup', exact: true, name: 'Sign Up', component: Signup },
+  { path: '/auth/signin', exact: true, name: 'Sign In', component: Signin },
+  { path: '/user/:userId', exact: true, name: 'User Details', component: Profile },
+  { path: '/user/edit/:userId', exact: true, name: 'Edit Profile', component: EditProfile },
+  { path: '/place-request/get-started', exact: true, name: 'Place Request', component: PlaceARequestForm },
+  { path: '/inquiry', exact: true, name: 'User Details', component: Inquiry },
+  { path: '/product/:productId', exact: true, name: 'User Details', component: Product },
+  { path: '/admin/products/all', exact: true, name: 'User Details', component: ListProducts },
+  { path: '/shops/all', exact: true, name: 'User Details', component: Shops },
+  { path: '/admin/shops/all', exact: true, name: 'User Details', component: Shops },
+  { path: '/shops/:shopId', exact: true, name: 'User Details', component: Shop },
+  { path: '/verify-email', exact: true, name: 'User Details', component: VerifyEmail },
+  { path: '/order/:orderId', exact: true, name: 'User Details', component: Order },
+  { path: '/make-inquiry/:orderId', exact: true, name: 'User Details', component: Order },
+  { path: '/seller/orders/:shop/:shopId', exact: true, name: 'User Details', component: ShopOrders },
+  { path: '/seller/shops', exact: true, name: 'User Details', component: MyShops },
+  { path: '/business/register/new', exact: true, name: 'User Details', component: NewShop },
+  { path: '/seller/shop/edit/:shopId', exact: true, name: 'User Details', component: EditShop },
+  { path: '/seller/:shopId/products/new', exact: true, name: 'User Details', component: NewProduct },
+  { path: '/seller/:shopId/:productId/edit', exact: true, name: 'Edit Product', component: EditProduct },
+  { path: '/seller/stripe/connect', exact: true, name: 'User Details', component: StripeConnect },
+  { path: '/auth/admin/signin', exact: true, name: 'Admin Login', component: Login },
+  { path: '/auth/admin/register', exact: true, name: 'Admin Registration', component: Register },
+  { path: '/admin', exact: true, name: 'User Details', component: Admin },
 ];
 
 export default routes;

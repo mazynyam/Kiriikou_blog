@@ -29,7 +29,7 @@ const sendEmail = async(user)=>{
 }
 const adminSignin = async (user) => {
     try {
-      let response = await fetch('/auth/admin/signin/', {
+      let response = await fetch('/auth/admin/signin', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import CIcon from '@coreui/icons-react'
-import {adminSignin} from '../auth/api-auth'
+import {signin} from '../auth/api-auth'
 import auth from '../auth/auth-helper'
 import { Container, Row, Card, Form, Col, Button} from 'react-bootstrap'
 import {
@@ -34,12 +34,20 @@ export default function Login(props) {
           password: values.password || undefined
         }
     
-        adminSignin(user).then((data) => {
+       signin(user).then((data) => {
           if (data) {
             setValues({ ...values, error: data.error})
           } else {
             auth.authenticate(data, () => {
               setValues({ ...values, error: '',redirectToReferrer: true})
+            })
+          }
+          if(user.isAdmin){
+            setValues({...values, error:data.error})
+          }
+          else{
+            auth.authenticate(data, ()=>{
+              setValues({...values, error:'', redirectToReferrer:true})
             })
           }
         })

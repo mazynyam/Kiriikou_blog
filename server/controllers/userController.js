@@ -6,7 +6,7 @@ import config from '../../config/config'
 import stripe from 'stripe'
 import sgmail from '@sendgrid/mail'
 import crypto from 'crypto'
-import nodemailer from 'nodemailer'
+
 import {signin} from './../../client/auth/api-auth'
 
 const sgMail = require('@sendgrid/mail')

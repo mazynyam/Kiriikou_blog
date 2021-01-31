@@ -14,20 +14,19 @@ const server = http.createServer(app)
 const io = socketio(server)
 
 io.on('connection', (socket)=>{
-  socket.on('join', ({ uuid,name }, callback)=>{
-    const { error, user } = addUser({ id:socket.id, uuid, name})
+  socket.on('join', ({ name, room }, callback)=>{
+    const { error, user } = addUser({ id:socket.id,  name, room})
     if(error) return callback(error)
 
-    socket.emit('message', { user:'admin', text:`Hello ${user.name}, welcome to Kiriikou Chat Support`});
-    socket.broadcast.to(user.uuid).emit('message', { user:'admin', text:`A new user with id ${user.uuid} has joined`});
-    socket.join(user.uuid)
+    socket.emit('message', { user:'admin', text:`Hello , welcome to Kiriikou Chat Support`});
+    socket.broadcast.to(user.room).emit('message', { user:'admin', text:`A new user with name ${user.name} has joined`});
+    socket.join(user.room)
     callback()
   });
 
   socket.on('sendMessage', (message, callback)=>{
-    const user = getUser(id.id)
-
-    io.to(user.uuid).emit('message', { user: user.uuid, text:message});
+    const user = getUser(socket.id)
+    io.to(user.room).emit('message', { user: user.name, text: message})
     callback()
   })
 

@@ -1,35 +1,33 @@
-import React, {useRef, useState } from 'react'
-import {  Form, Button } from 'react-bootstrap'
-import { v4 as uuidV4} from 'uuid'
+import React, { useState } from 'react'
+import {  Button } from 'react-bootstrap'
+import { Link, Redirect} from 'react-router-dom'
+import chat  from './chat-helper'
+export default function ChatLogin(props) {
+    const [name, setName] = useState('')
+    const [room, setRoom] = useState('adminSupport')
+    const [redirect, setRedirect] = useState(false)
 
-export default function ChatLogin({onIdSubmit}) {
-    const idRef = useRef()
-    const nameRef = useRef()
-    const [values, setValues] =useState({name:''})
-    function handleSubmit(e){
-        e.preventDefault()
-        onIdSubmit(idRef.current.value, nameRef.current.value)
+    const clickSubmit = (event)=>{
+        event.preventDefault()
+        chat.addItem(props.item, ()=>{
+            setRedirect({redirect:true})
+        })
     }
-    function createNewIdAndName(){
-        onIdSubmit(uuidV4())
+    if (redirect) {
+        return (<Redirect to={'/'}/>)
     }
-
-   
     return (
-        <div className='form-container'>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group>
-                        <Form.Label>Make Chat Request</Form.Label>
-                        <Form.Control className='w-100' type='text' ref={idRef} required />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Your name</Form.Label>
-                        <Form.Control className='w-100' type='text' ref={nameRef} onChange={(e)=>e.target.values} required />
-                    </Form.Group>
-                    <div className=' d-flex'>
-                    <Button variant='secondary' onClick={createNewIdAndName}>Create Request</Button>
-                    </div>
-                </Form>
-        </div>
+       
+            <div className='joinOuterContainer'>
+                <div className='joinInnerContainer'>
+                    <h1>Create a chat request</h1>
+                    <div><input type='text' className='joinInput'  onChange={(event)=> setName(event.target.value)}  /></div>
+                    <div><input type='text' className='joinInput mt-2' onChange={(event)=> setRoom(event.target.value)}  /></div>
+                    <Link  to={`/chat?name=${name}&room=${room}`}>
+                        <Button className='button mt-20' onClick={clickSubmit}>Request</Button>
+                    </Link>
+                </div>
+            </div>
+     
     )
 }

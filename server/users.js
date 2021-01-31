@@ -1,12 +1,12 @@
 const users = []
 
-const addUser = ({ id, uuid, name})=>{
+const addUser = ({ id, room, name})=>{
     // name = name.trim().toLowerCase()
-    const existingUserId = users.find((user)=>user.uuid === uuid && user.name === name)
+    const existingUserId = users.find((user)=>user.room === room && user.name === name)
     if(existingUserId){
-        return { error: 'ID already taken'}
+        return { error: 'name already taken'}
     }
-    const user = { id, uuid, name}
+    const user = { id, name, room}
     users.push(user)
     return {user};
 }
@@ -18,9 +18,9 @@ const removeUser = (id)=>{
     }
 }
 
-const getUser = (id)=> users.find(()=>user.id === id);
+const getUser = (id)=> users.find((user)=>user.id === id);
 
-const getUsersInChat = (uuid) => users.filter((user)=>user.uuid === uuid)
+const getUsersInChat = (room) => users.filter((user)=>user.room === room)
 
 module.exports = {
     addUser, 
