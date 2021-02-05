@@ -36,13 +36,13 @@ const _nav =  [
           _tag: 'CSidebarNavItem',
           name: 'Shops',
           to: '/admin/shops/all',
-          icon: 'cil-shop',
+          icon: 'cil-tags',
         },
         {
           _tag: 'CSidebarNavItem',
           name: 'Orders',
           to: '/admin/orders',
-          icon: 'cil-cart',
+          icon: 'cil-shoppingCart',
         },
         
       ],
@@ -58,13 +58,13 @@ const _nav =  [
           _tag: 'CSidebarNavItem',
           name: 'New',
           to: '/admin/new-blog',
-          icon: 'cil-blog',
+          icon: 'cil-add',
         },
         {
           _tag: 'CSidebarNavItem',
           name: 'All Post',
           to: '/admin/all-post',
-          icon: 'cil-edit',
+          icon: 'cil-visibility',
         },
         
       ],

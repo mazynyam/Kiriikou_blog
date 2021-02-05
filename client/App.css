@@ -485,6 +485,12 @@ body{
     font-size:11;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
+  /* .gridList{
+    min-width: '100%';
+  } */
+  .MuiGridListTile-root{
+    display:block
+  }
   html,body
 {
     width: auto;

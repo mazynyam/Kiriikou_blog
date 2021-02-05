@@ -6,6 +6,9 @@
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
+.c-sidebar h2{
+    color:yellow
+}
 
 .sidebar__title{
     display: flex;

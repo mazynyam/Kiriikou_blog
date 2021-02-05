@@ -16,8 +16,7 @@ export default function Input({message, setMessage, sendMessage}) {
                 <i className='fa fa-send'>
                 </i>
             </button>
-            </div>
-            
+            </div>   
         </form>
         </div>
     )

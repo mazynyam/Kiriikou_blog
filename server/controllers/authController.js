@@ -19,11 +19,11 @@ const signin = async (req, res) => {
           error: "Email and password don't match."
         })
       }
-      if(!user.isVerified){
-        return res.status(401).json({
-          error:'Not verified, Please verify your account'
-        })
-      }
+      // if(!user.isVerified){
+      //   return res.status(401).json({
+      //     error:'Not verified, Please verify your account'
+      //   })
+      // }
       
       const token = jwt.sign({
         _id: user._id

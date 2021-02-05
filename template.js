@@ -11,21 +11,7 @@ export default ({markup, css, name}) => {
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
           <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-          <link href="./client/assets/css/bootstrap.css" rel="stylesheet">
-          <!-- Font Awesome -->
-            <link href="/client/assets/css/font-awesome.css" rel="stylesheet">
-            <!-- NProgress -->
-            <link href="/client/assets/css/nprogress.css" rel="stylesheet">
-            <!-- iCheck -->
-            <link href="/client/assets/css/green.css" rel="stylesheet">
-            <!-- bootstrap-progressbar -->
-            <link href="/client/assets/css/bootstrap-progressbar-3.3.4.css" rel="stylesheet">
-            <!-- JQVMap -->
-            <link href="/client/assets/css/jqvmap.css" rel="stylesheet"/>
-            <!-- bootstrap-daterangepicker -->
-            <link href="/client/assets/css/daterangepicker.css" rel="stylesheet">
-            <!-- Custom Theme Style -->
-            <link href="/client/assets/css/custom.css" rel="stylesheet">
+          
           <link rel="shortcut icon" href='${favicon}'>
            <link rel="apple-touch-icon" sizes="180x180" href="/client/assets/images/apple-touch-icon.png">
            <link rel="icon" type="image/png" sizes="32x32" href="/client/assets/images/favicon-32x32.png">

@@ -293,6 +293,15 @@ const createCharge = (req, res, next) => {
   })
 }
 
+// const payWithFlutterwave = (req, res, next)=>{
+//   request({
+//     url:"https://api.flutterwave.com/v3/payments",
+//     method:"POST",
+//     headers:`Bearer ${config.flutterwave_secret_key}`,
+//     json:true,
+//     body:{}
+//   })
+// }
 export default {
   create,
   userByID,

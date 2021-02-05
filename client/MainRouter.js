@@ -66,6 +66,7 @@ import Register  from './views/pages/register/Register'
            <PrivateRoute path="/admin/seller/orders/:shop/:shopId" component={ShopOrders}/>
           <PrivateRoute path="/seller/shops" component={MyShops}/>
           <PrivateRoute path="/seller/shop/new" component={NewShop}/>
+          <PrivateRoute path="/business/register/new" component={NewShop}/>
           <PrivateRoute path="/seller/shop/edit/:shopId" component={EditShop}/>
           <PrivateRoute path="/seller/:shopId/products/new" component={NewProduct}/>
           <PrivateRoute path="/admin/seller/:shopId/products/new" component={NewProduct}/>

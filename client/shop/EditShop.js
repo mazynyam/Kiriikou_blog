@@ -17,7 +17,8 @@ import {read, update} from './api-shop.js'
 import {Redirect} from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import MyProducts from './../product/MyProducts'
-import kik from './../assets/images/kik.png'
+
+import Config from '../auth/flutterwave-helper'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -80,25 +81,9 @@ export default function EditShop ({match}) {
     redirect: false,
     error: '',
     id: '',
-    amount: Number
   })
-  const Config = {
-    public_key:'FLWSECK_TEST-e53a8f6a4c7a94b1801cd8e12256d757-X',
-    tx_ref:Date.now(),
-    amount: 100,
-    currency:'USD, GHS',
-    payment_options:'card, ghanamobilemoney',
-    customer:{
-      email:'phinehas499@gmail.com',
-      phonenumber:'0244789087',
-      name:'User name'
-    },
-    customizations:{
-      title:'Business Registration',
-      description:'Payment for business registration',
-      logo:kik
-    }
-  };
+
+ 
 
   // const handlePayment = useFlutterwave(fwConfig)
   const jwt = auth.isAuthenticated()

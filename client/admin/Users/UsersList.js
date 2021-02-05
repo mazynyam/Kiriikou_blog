@@ -60,7 +60,7 @@ const UsersList = () => {
             items={users}
             fields={[
               { key: 'name', _classes: 'font-weight-bold' },
-              'email', 'phone', 'isVerified'
+              'email', 'phone', 'seller'
             ]}
             hover
             striped

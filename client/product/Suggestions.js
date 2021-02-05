@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
   iconButton: {
     width: '28px',
     height: '28px',
-    color:"#0ff0f2"
+    color:"#000"
   },
   cartButton:{
     color:"#ACD523"
@@ -126,9 +126,9 @@ export default function Suggestions (props) {
                     </Typography>
                   </CardContent>
                   <div className={classes.controls}>
-                    <Typography type="subheading" component="h3" className={classes.price} color="primary">$ {item.price}</Typography>
+                    {/* <Typography type="subheading" component="h3" className={classes.price} color="primary">$ {item.price}</Typography> */}
                       <span className={classes.actions}>
-                        <AddToInquiry className={classes.iconButton} item={item}/>
+                        <AddToInquiry className={classes.iconButton} style={{color:'#000'}} item={item}/>
                       </span>
                     </div>
                   </div>

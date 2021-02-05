@@ -5,7 +5,7 @@ export default function Main() {
    
     return (
 <main className='main'>
-  
+  <div className='main__container'>
       <div className='main__cards'>
             <div className='cards'>
                 <i className='fa fa-users fa-2x text-lightblue'></i>
@@ -37,8 +37,8 @@ export default function Main() {
             </div>
         
         </div>
-     
-   <UsersList />
+    <UsersList />
+  </div>
 </main>
 //   <Footer />
 ) 

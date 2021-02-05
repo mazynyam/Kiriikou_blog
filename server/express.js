@@ -27,7 +27,7 @@ import theme from './../client/theme'
 //end
 
 //comment out before building for production
-import devBundle from './devBundle'
+// import devBundle from './devBundle'
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
@@ -35,7 +35,7 @@ const app = express()
 
 
 //comment out before building for production
-devBundle.compile(app)
+// devBundle.compile(app)
 
 // parse body params and attache them to req.body
 app.use(bodyParser.json())
@@ -45,13 +45,14 @@ app.use(compress())
 // secure apps by setting various HTTP headers
 app.use(helmet())
 // enable CORS - Cross Origin Resource Sharing
-app.use(cors({credentials:true}))
+app.use(cors({credentials:true, origin:'http://localhost:4000'}))
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: config.jwtSecret,
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+  saveUninitialized: false,
+  cookie: { secure: true, sameSite:'none'},
+
 }))
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 

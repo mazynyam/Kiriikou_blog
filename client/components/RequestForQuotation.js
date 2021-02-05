@@ -19,8 +19,8 @@ function RequestForQuotation() {
                             Click the button next to get Started <i className='fa fa-arrow-right 8x'></i>
                             </Typography>
                         </div>
-                    </div>
                     <a  href='/place-request/get-started'  className='btn btn-dark'>Request Quotation</a>
+                    </div>
                 </section>
             </div>
             </div>

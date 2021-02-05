@@ -6,7 +6,7 @@ import Footer from '../core/Footer'
 export default function Admin() {
    
     return (
-        <div>
+        <div className='containers'>
             <Sidebar  />
             <Main  />
            
