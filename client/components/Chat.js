@@ -41,13 +41,13 @@ const Chat = ( ) => {
             setMessages([...messages, message])
         })
     },[messages])
-    const sendMessage = e =>{
-        e.preventDefault()
+    const sendMessage = event =>{
+        event.preventDefault()
         if(message){
             socket.emit('sendMessage', message, ()=> setMessage(''))
         }
     }
-    console.log(message, messages)
+    // console.log(message, messages)
     const ChatMessage = ()=>{
         return(
         <div>

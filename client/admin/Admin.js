@@ -1,15 +1,16 @@
 import React from 'react'
 import Sidebar from './sidebar/Sidebar';
 import Main from './main/Main'
-import TheContent from './TheContent';
-import Footer from '../core/Footer'
+import Navbar from './navbar/Navbar';
 export default function Admin() {
    
     return (
-        <div className='containers'>
+       
+        <div className='wrapper'>
+            <Navbar />
             <Sidebar  />
             <Main  />
-           
         </div>
+       
     )
 }

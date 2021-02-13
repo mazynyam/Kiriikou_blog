@@ -107,8 +107,11 @@ export default function Home(){
 
 
     return (
+      <>
+                <div>
+                  <Menu />
+                  </div>
 
-<>
           <div className={classes.root}>
             <Grid container spacing={2}>
               <Grid>

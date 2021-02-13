@@ -120,7 +120,7 @@ export default function Categories(props){
           <div className={classes.root}>
             <GridList className={classes.gridList} cols={4}>
               {props.categories.map((tile, i) => (
-                <GridListTile key={i} className={classes.tileTitle} id="tilett" style={{height: '48px', width:"273px", backgroundColor: selected == tile? '#17293d':'#17293d'}}>
+                <GridListTile key={i} className={classes.tileTitle} id="cattileTitle" style={{height: '48px', width:"276px", backgroundColor: selected == tile? '#17293d':'#17293d'}}>
                   <span className={classes.link} onClick={listbyCategory(tile)}>{tile}  <Icon className={classes.icon}>{selected == tile && 'arrow_drop_down'}</Icon></span>
                 </GridListTile>
               ))}

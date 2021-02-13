@@ -15,6 +15,7 @@ import {Link} from 'react-router-dom'
 import Divider from '@material-ui/core/Divider'
 import {listByShop} from './../product/api-product.js'
 import DeleteProduct from './../product/DeleteProduct'
+import { fade} from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   products: {
@@ -26,14 +27,16 @@ const useStyles = makeStyles(theme => ({
   leftIcon: {
     marginRight: "8px"
   },
+  
   title: {
     margin: theme.spacing(2),
-    color: theme.palette.protectedTitle,
+    color: "#acd523",
+    fontFamily:"Arial Black",
     fontSize: '1.2em'
   },
   subheading: {
     marginTop: theme.spacing(2),
-    color: theme.palette.openTitle
+    color: "#acd523"
   },
   cover: {
     width: 110,
@@ -43,6 +46,25 @@ const useStyles = makeStyles(theme => ({
   details: {
     padding: '10px'
   },
+  newpr:{
+    backgroundColor:'#17293d',
+    '&:hover': {
+      backgroundColor: fade('#17293d',1.0),
+    },
+    color:"white"
+     },
+    
+
+       linkpr:{
+        backgroundColor:'#17293d',
+      
+        textDecorationColor:"white",
+      '&:hover': {
+           backgroundColor: fade('#17293d'),
+           textDecorationColor:"white",
+           
+           },
+          }
 }))
 
 export default function MyProducts (props){
@@ -79,8 +101,8 @@ export default function MyProducts (props){
         <Typography type="title" className={classes.title}>
           Products
           <span className={classes.addButton}>
-            <Link to={"/seller/"+props.shopId+"/products/new"}>
-              <Button color="primary" variant="contained">
+            <Link to={"/seller/"+props.shopId+"/products/new"} className={classes.linkpr}>
+              <Button className={classes.newpr} variant="contained">
                 <Icon className={classes.leftIcon}>add_box</Icon>  New Product
               </Button>
             </Link>
@@ -110,6 +132,7 @@ export default function MyProducts (props){
                     </IconButton>
                   </Link>
                   <DeleteProduct
+                  
                     product={product}
                     shopId={props.shopId}
                     onRemove={removeProduct}/>

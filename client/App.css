@@ -1,4 +1,60 @@
+#kimg{
+  height:55px;
+  width:210px;
+  justify-content:center;
+  margin-bottom:20px;
+    }
+    #butcolor{
+      background-color: "#acd523";
+    }
+    
+   
+    #myinquire{
+      font-size: 12px;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+     
+    }  
+#tileTitle {
+  font-size:0.8em;
+  margin-bottom:2px;
+color:#fff;
 
+  /* display:block; */
+ 
+}
+#cattileTitle{
+  height: 20px;
+   width:100px;
+   
+    vertical-align: middle;
+    line-height: 2.1;
+    text-align: center;
+    font-size: 1.2em;
+     margin: 0 1px 0 5px;
+    background-color: #17293d;
+    font-family: 'Gill Sans',  Calibri, 'Trebuchet MS', sans-serif;
+    
+  
+  
+}
+
+#priceTitle {
+  font-size:0.8em;
+ color:#fff;
+ margin-left: 17px;
+ display:block;
+ text-decoration:'none';
+
+  
+}
+#mytilebar {
+  background-color: #17293d;
+  height:40px;
+  text-align:left;
+   margin-top:40px;
+  width:276px;
+  
+}
 .sitewrapper {
   position: fixed;
   width: 100%;
@@ -19,7 +75,7 @@ width:423px;
   background-color:#17293d;
   margin: 0px auto;
   color:rgb(193, 199, 204); 
-  height:30;
+  height: 66;
   /* width: 100%; */
   font-size:11;
   bottom:0;
@@ -473,7 +529,34 @@ body{
   width: 100%;
   border-bottom: 2px solid rgb(76, 118, 224);
 }
-
+@media only screen and (max-width: 280px){
+  .rfq-quotation .rfq-content {
+    width: 100%;
+    margin-bottom: 40px;
+    height: 100%;
+    display:block;
+  }
+  .title-info{
+    display: block;
+    align-items: center;
+  }
+   .rfq-banner  {
+    width: 100%;
+    margin-bottom: 40px;
+    height: 100%;
+    display:block;
+  }
+  .footer {
+    background-color:#17293d;
+    margin: 0px auto;
+    color:rgb(193, 199, 204); 
+    height:30;
+    width: 100%;
+    font-size:8px;
+    bottom:0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}
 @media only screen and (min-width: 200px) and (max-width: 1089px)  {
   .footer {
     background-color:#17293d;
@@ -511,7 +594,7 @@ body{
 }
 
 
-@media only screen and (max-width: 16000px)  {
+@media only screen and (max-width: 540px)  {
   html,body
 {
     width: 100%;
@@ -526,7 +609,7 @@ body{
 }
 
 .title-info{
-  display: flex;
+  display: block;
   align-items: center;
 }
 
@@ -556,10 +639,15 @@ body{
   margin-top: 20px;
 }
 
-@media screen and (max-width: 1100px){
+@media only screen and (min-width: 768px) and (max-width: 16000px){
 .rfq-quotation .rfq-content .rfq-form {
   width: 100%;
 }
+.title-info{
+  display: flex;
+  align-items: center;
+}
+
 }
 .rfq-quotation .rfq-content .rfq-form .form-body {
   background: #fff;
@@ -576,3 +664,198 @@ body{
 .rfq-quotation .rfq-content .rfq-form .form-body .form-item {
   margin-bottom: 20px;
 }
+@media only screen and (min-width: 20px) and (max-width: 545px)  {
+  
+  
+  #kimg{
+    height:40px;
+    width:130px;
+    justify-content:center;
+    margin-bottom:20px;
+      }
+      #myinquire{
+        font-size: 10px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }  
+
+        #addinquiry{
+          justify-content: left;
+          margin-left: 0px;
+
+        }
+  #tileTitle {
+    font-size:8px;
+ color:#fff;
+  display:block;
+   }
+  
+  #priceTitle {
+    font-size:8px;
+   color:#fff;
+  
+   display:block;
+   text-decoration:'none';
+  
+    
+  }
+  
+  #mytilebar {
+    background-color: #17293d;
+    height:65px;
+    text-align:left;
+    display: block;
+    width:300px;
+    margin-top:60px;
+    
+    
+    
+  }
+      /* #myflex{
+        display:block;
+      } */
+}
+
+@media only screen and (min-width: 20px) and (max-width: 420px)  {
+  
+  
+  #kimg{
+    height:40px;
+    width:130px;
+    justify-content:center;
+    margin-bottom:20px;
+      }
+      #myinquire{
+        font-size: 7px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }  
+
+        #addinquiry{
+          justify-content: left;
+          margin-left: 0px;
+
+        }
+  #tileTitle {
+    font-size:7px;
+ color:#fff;
+  display:block;
+   }
+  
+  #priceTitle {
+    font-size:7px;
+   color:#fff;
+  
+   display:block;
+   text-decoration:'none';
+  
+    
+  }
+  
+  #mytilebar {
+    background-color: #17293d;
+    height:65px;
+    text-align:left;
+    display: block;
+    width:300px;
+    margin-top:60px;
+    
+    
+    
+  }
+      /* #myflex{
+        display:block;
+      } */
+}
+
+
+@media only screen and (min-width: 900px) and (max-width: 1024px)  {
+  /* .footer {
+    background-color:#17293d;
+     position: fixed;
+    bottom: 0px; 
+    color:rgb(193, 199, 204); 
+    height:100px;
+    width: 100%;
+    display:block;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  #myflex{
+    display:block;
+  }
+}
+@media only screen and (max-width: 378px)  {
+  #mymedia{
+    height: 300px;
+    display: inline-block;
+    width: 100px;
+    margin-left: '5px';
+    
+  }
+  #bestft{
+    font-family:"Gilbert Color";
+       font-weight:bolder;
+      font-size: 17px;
+  } */
+  #kimg{
+    height:50px;
+    width:150px;
+    justify-content:center;
+    margin-bottom:20px;
+      }
+      /* .footer {
+        background-color:#17293d;
+         position: fixed;
+        bottom: 0px; 
+        color:rgb(193, 199, 204); 
+        height:90px;
+        width: 100%;
+        display:block;
+       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+      #copytbar{
+        background-color:#17293d;
+        color:#ACD523;
+        font-style: normal;
+        font-family:"Arial";
+        font-weight:bold;
+        font-size: 8px;
+        margin-top: 25px;
+      
+      
+      }
+      #textbar{
+        font-size:8px;
+        margin-top: 7px;
+      }
+      #myflex{
+        display:block;
+      } */
+ 
+}
+@media only screen and (min-width:330px) and (max-width: 750px)  {
+  /* #mymedia{
+    height: 180px;
+    display: inline-block;
+    width: 200px;
+    margin-left: '9px';
+    
+  }
+  #mysubheading {
+    margin: 20px;
+   display: block;
+    color:#17293d;
+  }
+  #myflex{
+    display:block;
+  }
+  #myaction{
+    margin: 8px 5px;
+    display: block;
+  }
+  #supimage {
+    height: 150px;
+    width:100px;
+    margin-left: 0px;
+    
+  } */
+}
+

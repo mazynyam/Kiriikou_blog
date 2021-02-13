@@ -12,6 +12,12 @@ import {makeStyles} from '@material-ui/core/styles'
 import cart from './cart-helper.js'
 import {Link} from 'react-router-dom'
 import { fade} from '@material-ui/core/styles';
+import Footer from '../core/Footer'
+import Menu from '../core/Menu'
+
+
+
+
 const useStyles = makeStyles(theme => ({
   card: {
     margin: '24px 0px',
@@ -115,7 +121,19 @@ fontSize:"12px",
   color: fade('#fff', 0.8),
   backgroundColor: fade('#acd523', 0.6),
  },
+ 
   },
+  sendBtn:{
+    backgroundColor:"#acd523",
+    fontFamily:"Arial Black",
+    fontSize:"12px",
+    color:'#17293d',
+    '&:hover': {
+      color: fade('#fff', 0.8),
+      backgroundColor: fade('#acd523', 0.6),
+     },
+     
+      },
   loginChk:{
     
     color:' #acd523',
@@ -132,7 +150,7 @@ fontSize:"12px"
   },
   
     
-}))
+}));
 
 export default function InquiryItems (props) {
   const classes = useStyles()
@@ -167,7 +185,10 @@ export default function InquiryItems (props) {
     props.setEnquiryCheckout(true)
   }
 
-    return (<Card className={classes.card}>
+    return (
+    <>
+    <Menu />
+    <Card className={classes.card}>
       <Typography type="title" className={classes.title}>
         Make Inquiry
       </Typography>
@@ -211,7 +232,7 @@ export default function InquiryItems (props) {
         <div className={classes.checkout}>
           <span className={classes.total}>Total: <span className={classes.gtotal}>${getTotal()}</span></span>
           {!props.enquiryCheckout && (auth.isAuthenticated()?
-            <Button color="secondary" variant="contained" onClick={openEnquiryCheckout}>Send Inquiry Now</Button>
+            <Button  className={classes.sendBtn} variant="contained" onClick={openEnquiryCheckout}>Send Inquiry Now</Button>
             :
             <Link to="/auth/signin" className={classes.loginChk}>
               <Button className={classes.continueChk}color="primary" variant="contained"><i className='fa fa-sign-in'></i>Sign in to send inquiry</Button>
@@ -222,13 +243,18 @@ export default function InquiryItems (props) {
         </div>
       </span>) :
         <div>
+        
             <Typography variant="subtitle1" component="h3" color="primary">No items inquired </Typography>
             <Link to='/' className={classes.continueBtn}>
                 <Button className={classes.continueShp} variant="contained">Continue Shopping</Button>
             </Link>
+         
         </div>
     }
-    </Card>)
+    </Card>
+    <Footer />
+    </>
+    )
 }
 
 InquiryItems.propTypes = {

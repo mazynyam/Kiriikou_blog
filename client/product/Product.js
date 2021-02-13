@@ -145,7 +145,7 @@ export default function Product ({match}) {
               </Card>
             </Grid>
             {suggestions.length > 0 &&
-              (<Grid item xs={5} sm={5}>
+              (<Grid item  xs={12} sm={12} md={12} lg={5} xl={5}>
                 <Suggestions  products={suggestions} title='Related Products'/>
               </Grid>)}
           </Grid>

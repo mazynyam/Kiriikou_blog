@@ -53,7 +53,7 @@ export default function MyOrders(){
         <List dense>
           {orders.map((order, i) => {
             return <span key={i}>
-                      <Link to={"/order/"+order._id}>
+                      <Link to={"/make-inquiry/"+order._id}>
                         <ListItem button>
                           <ListItemText primary={<strong>{"Order # "+order._id}</strong>} secondary={(new Date(order.created)).toDateString()}/>
                         </ListItem>
