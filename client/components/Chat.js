@@ -16,7 +16,7 @@ const Chat = ( ) => {
     const [ room, setRoom ] = useState('')
     const [ name, setName ] = useState('')
 
-    const ENDPOINT =  `localhost:${config.port}`
+    const ENDPOINT =  `localhost:${config.port}` || "https://kiriiikou-ecommerce-site.herokuapp.com"
     
 
     socket = io(ENDPOINT)
