@@ -15,8 +15,8 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import {Link} from 'react-router-dom'
 import crypto from 'crypto'
-
-
+import Footer from '../core/Footer'
+import Header from '../core/Menu'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -88,7 +88,10 @@ export default function Signup() {
       
     })
   }   
-    return (<div>
+    return (
+    <>
+    <Header />
+    <div>
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h6" className={classes.title}>
@@ -124,5 +127,8 @@ export default function Signup() {
         </DialogActions>
       </Dialog>
     </div>
+    <Footer />
+    </>
+
   )
 }

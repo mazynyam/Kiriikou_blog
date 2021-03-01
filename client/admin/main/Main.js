@@ -4,7 +4,7 @@ export default function Main() {
     const [sidebar, setSidebar]  = useState(false)
     return (
        <div className="content-wrapper">
-  {/* Content Header (Page header) */}
+ 
   <div className="content-header">
     <div className="container-fluid">
       <div className="row mb-2">
@@ -20,11 +20,10 @@ export default function Main() {
       </div>{/* /.row */}
     </div>{/* /.container-fluid */}
   </div>
-  {/* /.content-header */}
-  {/* Main content */}
+  
   <section className="content">
     <div className="container-fluid">
-      {/* Small boxes (Stat box) */}
+     
       <div className="row">
         <div className="col-lg-3 col-6">
           {/* small box */}
@@ -83,12 +82,11 @@ export default function Main() {
         </div>
         {/* ./col */}
       </div>
-      {/* /.row */}
-      {/* Main row */}
+     
       <div className="row">
-        {/* Left col */}
+    
         <section className="col-lg-7 connectedSortable">
-          {/* Custom tabs (Charts with tabs)*/}
+        
           <div className="card">
             <div className="card-header">
               <h3 className="card-title">
@@ -118,24 +116,21 @@ export default function Main() {
               </div>
             </div>{/* /.card-body */}
           </div>
-          {/* /.card */}
-
          
           <UsersList />
         </section>
-        {/* /.Left col */}
-        {/* right col (We are only adding the ID to make the widgets sortable)*/}
+       
         <section className="col-lg-5 connectedSortable">
-          {/* Map card */}
+        
                     <div className="card bg-gradient-success">
             <div className="card-header border-0">
                 <h3 className="card-title">
                 <i className="far fa-calendar-alt" />
                 Calendar
                 </h3>
-                {/* tools card */}
+                
                 <div className="card-tools">
-                {/* button with a dropdown */}
+               
                 <div className="btn-group">
                     <button type="button" className="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset={-52}>
                     <i className="fas fa-bars" /></button>
@@ -150,15 +145,13 @@ export default function Main() {
                 </div>
                 {/* /. tools */}
             </div>
-            {/* /.card-header */}
+     
             <div className="card-body pt-0">
-                {/*The calendar */}
+                
                 <div id="calendar" style={{width: '100%'}} />
             </div>
-            {/* /.card-body */}
+           
             </div>
-
-          {/* DIRECT CHAT */}
           <div className="card direct-chat direct-chat-primary">
             <div className="card-header">
               <h3 className="card-title">Live Chat</h3>
@@ -167,23 +160,23 @@ export default function Main() {
                 
               </div>
             </div>
-            {/* /.card-header */}
+           
             <div className="card-body">
-              {/* Conversations are loaded here */}
+           
               <div className="direct-chat-messages">
-                {/* Message. Default to the left */}
+               
                 <div className="direct-chat-msg">
                   <div className="direct-chat-infos clearfix">
                     
                     <span className="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                   </div>
-                  {/* /.direct-chat-infos */}
+                
                   <p className="direct-chat-img">Name</p>
-                  {/* /.direct-chat-img */}
+                 
                   <div className="direct-chat-text">
                     Is this template really for free? That's unbelievable!
                   </div>
-                  {/* /.direct-chat-text */}
+                  
                 </div>
                 {/* /.direct-chat-msg */}
                 {/* Message to the right */}
@@ -192,48 +185,45 @@ export default function Main() {
                     
                     <span className="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                   </div>
-                  {/* /.direct-chat-infos */}
+                 
                   <p className="direct-chat-img">Name</p>
-                  {/* /.direct-chat-img */}
+                  
                   <div className="direct-chat-text">
                     You better believe it!
                   </div>
-                  {/* /.direct-chat-text */}
+                  
                 </div>
-                {/* /.direct-chat-msg */}
-                {/* Message. Default to the left */}
+               
                 <div className="direct-chat-msg">
                   <div className="direct-chat-infos clearfix">
                     
                     <span className="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                   </div>
-                  {/* /.direct-chat-infos */}
+                 
                   <p className="direct-chat-img">Name</p>
-                  {/* /.direct-chat-img */}
+                  
                   <div className="direct-chat-text">
                     Working with AdminLTE on a great new app! Wanna join?
                   </div>
-                  {/* /.direct-chat-text */}
+                 
                 </div>
-                {/* /.direct-chat-msg */}
-                {/* Message to the right */}
+                
                 <div className="direct-chat-msg right">
                   <div className="direct-chat-infos clearfix">
                  
                     <span className="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                   </div>
-                  {/* /.direct-chat-infos */}
+                 
                   <p className="direct-chat-img">Name</p>
-                  {/* /.direct-chat-img */}
+               
                   <div className="direct-chat-text">
                     I would love to.
                   </div>
-                  {/* /.direct-chat-text */}
+                 
                 </div>
-                {/* /.direct-chat-msg */}
+                
               </div>
-              {/*/.direct-chat-messages*/}
-              {/* Contacts are loaded here */}
+              
               <div className="direct-chat-contacts">
                 <ul className="contacts-list">
                   <li>
@@ -246,10 +236,10 @@ export default function Main() {
                         </span>
                         <span className="contacts-list-msg">How have you been? I was...</span>
                       </div>
-                      {/* /.contacts-list-info */}
+                     
                     </a>
                   </li>
-                  {/* End Contact Item */}
+                 
                   <li>
                     <a href="#">
                       <img className="contacts-list-img" src="dist/img/user7-128x128.jpg" />
@@ -260,16 +250,15 @@ export default function Main() {
                         </span>
                         <span className="contacts-list-msg">I will be waiting for...</span>
                       </div>
-                      {/* /.contacts-list-info */}
                     </a>
                   </li>
                   
                   
                 </ul>
               </div>
-              {/* /.direct-chat-pane */}
+              
             </div>
-            {/* /.card-body */}
+     
             <div className="card-footer">
               <form action="#" method="post">
                 <div className="input-group">

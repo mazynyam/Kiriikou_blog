@@ -29,7 +29,7 @@ export default function Sidebar() {
          
         </li>
         <li className="nav-item">
-          <Link to="/products" className="nav-link">
+          <Link to="/admin/products/all" className="nav-link">
             <i className="nav-icon fas fa-th" />
             <p>
               Products
@@ -59,10 +59,10 @@ export default function Sidebar() {
           
         </li>
         <li className="nav-item has-treeview">
-          <Link to="some" className="nav-link">
+          <Link to="/admin/shops/all" className="nav-link">
             <i className="nav-icon fas fa-tree" />
             <p>
-              UI Elements
+              Shops
               <i className="fas fa-angle-left right" />
             </p>
           </Link>

@@ -12,6 +12,7 @@ import Divider from '@material-ui/core/Divider'
 import auth from './../auth/auth-helper'
 import {listByShop} from './api-order.js'
 import ProductOrderEdit from './ProductOrderEdit'
+import Header from '../core/Menu'
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
@@ -71,6 +72,8 @@ export default function ShopOrders({match}) {
   }
 
     return (
+      <>
+      <Header />
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography type="title" className={classes.title}>
@@ -99,5 +102,6 @@ export default function ShopOrders({match}) {
             </span>})}
         </List>
       </Paper>
-    </div>)
+    </div>
+    </>)
 }

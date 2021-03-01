@@ -17,6 +17,7 @@ import auth from './../auth/auth-helper'
 import {listByOwner} from './api-shop.js'
 import {Redirect, Link} from 'react-router-dom'
 import DeleteShop from './DeleteShop'
+import Header from '../core/Menu'
 
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
@@ -72,6 +73,8 @@ export default function MyShops(){
       return <Redirect to='/auth/signin'/>
     }
     return (
+      <>
+      <Header />
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography type="title" className={classes.title}>
@@ -112,5 +115,6 @@ export default function MyShops(){
             </span>})}
         </List>
       </Paper>
-    </div>)
+    </div>
+    </>)
 }

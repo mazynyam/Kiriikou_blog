@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider'
 import auth from './../auth/auth-helper'
 import {listByUser} from './api-order.js'
 import {Link} from 'react-router-dom'
-
+import Header from '../core/Menu'
 const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
     maxWidth: 600,
@@ -46,6 +46,8 @@ export default function MyOrders(){
   }, [])
 
     return (
+      <>
+      {/* <Header /> */}
       <Paper className={classes.root} elevation={4}>
         <Typography type="title" className={classes.title}>
           Your Orders
@@ -62,5 +64,6 @@ export default function MyOrders(){
                     </span>})}
         </List>
       </Paper>
+      </>
     )
 }

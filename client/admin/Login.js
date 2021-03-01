@@ -67,8 +67,7 @@ export default function Login(props) {
       }
     return (
         <div className="c-app c-default-layout flex-row align-items-center">
-        <CContainer>
-        
+        {/* <CContainer>
           <Row className="justify-content-center">
             <Col md="6">
                 <Card className="p-2">
@@ -103,8 +102,42 @@ export default function Login(props) {
                 </Card>    
             </Col>
           </Row>
-        </CContainer>
-      
+        </CContainer> */}
+          <div className="card card-info">
+        <div className="card-header">
+          <h3 className="card-title">Admin Login</h3>
+        </div>
+        <div className="form-horizontal">
+          <div className="card-body">
+            <div className="form-group row">
+              <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
+              <div className="col-sm-10">
+                <input type="email" className="form-control" onChange={handleChange('email')} value={values.email} id='email'  placeholder="Email" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <label htmlFor="password" className="col-sm-2 col-form-label">Password</label>
+              <div className="col-sm-10">
+                <input type="password" className="form-control" onChange={handleChange('password')} value={values.password} id='password' placeholder="Password" />
+              </div>
+            </div>
+            <div className="form-group row">
+              <div className="offset-sm-2 col-sm-10">
+                <div className="form-check">
+                  <input type="checkbox" className="form-check-input" id="exampleCheck2" />
+                  <label className="form-check-label" htmlFor="exampleCheck2">Remember me</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="card-footer">
+            <button type="submit" className="btn btn-info" onClick={clickSubmit}>Sign in</button>
+            <button type="submit" className="btn btn-default float-right">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+            
       </div>
     )
 }

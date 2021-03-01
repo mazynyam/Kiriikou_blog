@@ -114,6 +114,7 @@ export default function Search(props) {
         <Divider/>
         <Products products={values.results} searched={values.searched}/>
       </Card>
+    
     </div>
     )
 }

@@ -7,7 +7,6 @@ import Home from  './core/Home'
 import Menu from  './core/Menu'
 import Users from   './user/Users'
 import Admin  from './admin/Admin'
-import Dashboard  from './admin/Dashboard'
 import Signup from  './user/Signup'
 import Signin from  './auth/Signin'
 import EditProfile from  './user/EditProfile'
@@ -33,7 +32,8 @@ import Login from  './admin/Login'
 import UsersList from './admin/Users/UsersList'
 import ShopList from './admin/shops/ShopList'
 import SingleUser from './admin/Users/SingleUser'
-// import TheContent from  './admin/TheContent'
+import Dashboard from  './admin/Dashboard'
+import ProductList from './admin/products/ProductList'
 import Register  from './views/pages/register/Register'
 
  function MainRouter() {
@@ -43,7 +43,7 @@ import Register  from './views/pages/register/Register'
            <Route path='/' exact name='Home' render={props => <Home {...props} /> } />
            <Route path='/dashboard' exact name='Dashboard' render={props => <Dashboard {...props} /> } />
            <Route path='/users' name='Users' render={props => <Users {...props} /> } />
-           <Route path='/admin/users' name='Users' render={props => <UsersList {...props} /> } />
+           <Route path='/admin/users-list' name='Users' render={props => <UsersList {...props} /> } />
            <Route path='/auth/admin/signin' name='Admin Login' render={props => <Login {...props} /> } />
            <Route path='/auth/admin/signup' name='Admin Registration' render={props => <Register {...props} /> } />
            <Route path='/user/signup' name='Admin Login' render={props => <Signup {...props} /> } />
@@ -55,7 +55,7 @@ import Register  from './views/pages/register/Register'
            <Route path='/place-request/get-started' name='Admin Login' render={props => <PlaceARequestForm {...props} /> } />
            <Route path='/inquiry' name='Admin Login' render={props => <Inquiry {...props} /> } />
            <Route path='/product/:productId' name='Admin Login' render={props => <Product {...props} /> } />
-           <Route path='/admin/products/all' name='All Products' render={props => <ListProducts {...props} /> } />
+           <Route path='/admin/products/all' name='All Products' render={props => <ProductList {...props} /> } />
            <Route path='/shops/all' name='Shop' render={props => <Shops {...props} /> } />
            <Route path='/admin/shops/all' name='Shop' render={props => <ShopList {...props} /> } />
            <PrivateRoute path='/shops/:shopId' name='Shop' render={props => <Shop {...props} /> } />

@@ -11,15 +11,13 @@ import {
   CPagination
 } from '@coreui/react'
 
-import {list} from '../../user/api-product'
+import {list} from '../../product/api-product'
 
 
 const getBadge = status => {
   switch (status) {
-    case 'Active': return 'success'
-    case 'Inactive': return 'secondary'
-    case 'Pending': return 'warning'
-    case 'Banned': return 'danger'
+    case 'In Stock': return 'success'
+    case 'Out of Stock': return 'danger'
     default: return 'primary'
   }
 }
@@ -48,7 +46,7 @@ const ProductList = () => {
               console.log(data.error)
           }
           else{
-              setUsers(data)
+              setProducts(data)
           }
       })
       return function cleanup(){
@@ -56,19 +54,20 @@ const ProductList = () => {
       }
   }, [])
   return (
+    <div className="content-wrapper">
     <CRow>
       <CCol xl={12}>
         <CCard>
           <CCardHeader>
-            All user
+            All Products
             <small className="text-muted"> list</small>
           </CCardHeader>
           <CCardBody>
           <CDataTable
-            items={users}
+            items={products}
             fields={[
               { key: 'name', _classes: 'font-weight-bold' },
-              'email', 'phone', 'isVerified'
+              'quantity', 'description', 'status',  'category'
             ]}
             hover
             striped
@@ -98,6 +97,7 @@ const ProductList = () => {
         </CCard>
       </CCol>
     </CRow>
+    </div>
   )
 }
 

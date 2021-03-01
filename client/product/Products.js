@@ -42,33 +42,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     height: '80%',
     
-  },
-  // tileBar: {
-  //   // backgroundColor: 'rgba(0, 0, 0, 0.72)',
-  //   backgroundColor: '#17293d',
-  //   height:"48px",
-  //   textAlign: 'left',
-  //   marginTop:"40px",
-    
-  // },
-  // tileTitle: {
-  //   fontSize:'0.9em',
-  //   marginBottom:'5px',
-  //   // color:'rgb(189, 222, 219)',
-  //   color:'#fff',
-  //   // display:'block',
-   
-  // },
-  
-  // priceTitle: {
-  //   fontSize:'0.9em',
-  //   textDecoration:'none',
-  //   color:'#fff',
-  //   display:'block',
-    
-    
-    
-  // },
+  }
   
 }))
 
