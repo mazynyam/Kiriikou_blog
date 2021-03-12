@@ -12,24 +12,22 @@ import './components/chatbutton.css'
 import './components/infobar.css'
 import './components/Message.css'
 import './components/ChatLogin.css'
-import './admin/Admin.css'
-import './admin/navbar/Navbar.css'
-import './admin/sidebar/Sidebar.css'
-import './admin/main/Main.css'
-import './admin/adminlte.css'
-import './assets/css/jqvmap.css'
+import Signin from './auth/Signin'
 
-const App = () => {
+
+const App = (props) => {
   React.useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
   }, [])
+  
+  // if(!localStorage.getItem('jwt')) return <Signin />
   return (
   <BrowserRouter>
       <ThemeProvider theme={theme}>
-        {/* <Header /> */}
+        <Header />
           <MainRouter />
       </ThemeProvider>
   </BrowserRouter>

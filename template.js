@@ -6,6 +6,8 @@ export default ({markup, css, name}) => {
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta name="description" content="Africa's biggest online e-commerce">
+          <meta name="keywords" content="Kiriikou, africa, online, shopping, fashion, clothing,">
           <title>Kiriikou | ${name} </title>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400">
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

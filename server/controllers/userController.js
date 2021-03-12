@@ -269,8 +269,14 @@ const stripeCustomer = (req, res, next) => {
       })
   }
 }
-
 const createCharge = (req, res, next) => {
+  if(!req.profile.stripe_seller){
+    return res.status('400').json({
+      error: "Please connect your Stripe account"
+    })
+  }
+}
+const createCharges = (req, res, next) => {
   if(!req.profile.stripe_seller){
     return res.status('400').json({
       error: "Please connect your Stripe account"
