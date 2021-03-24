@@ -6,7 +6,7 @@ const config = {
   //   process.env.MONGO_HOST ||
   //   'mongodb://' + (process.env.IP || 'localhost') + ':' +
   //   (process.env.MONGO_PORT || '27017') +
-    // '/kiriikou-db',
+  //   '/kiriikou-db',
   mongoUri:"mongodb+srv://Phinehas:Phinehas86@cluster0.1gctm.mongodb.net/kiriikou-ecommerce?retryWrites=true&w=majority",
    stripe_connect_test_client_id: "",
   stripe_test_secret_key: "",

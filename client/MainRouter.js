@@ -35,6 +35,12 @@ import SingleUser from './admin/Users/SingleUser'
 import Dashboard from  './admin/Dashboard'
 import ProductList from './admin/products/ProductList'
 import Register  from './views/pages/register/Register'
+import Posts from './admin/blog/Posts'
+import CreatePost from './admin/blog/createpost/CreatePost'
+import SinglePost from './admin/blog/singlepost/SinglePost'
+import MyPost from './admin/blog/mypost/MyPost'
+import CreateTestimony from './testimony/CreateTestimony'
+
 
  function MainRouter() {
   return (
@@ -49,7 +55,10 @@ import Register  from './views/pages/register/Register'
            <Route path='/user/signup' name='Admin Login' render={props => <Signup {...props} /> } />
            <Route path='/auth/signin' name='Admin Login' render={props => <Signin {...props} /> } />
            <Route path='/user/:userId' name='Profile' render={props => <Profile {...props} /> } />
-           {/* <Route path='admin/user/:userId' name='Profile' render={props => <Profile {...props} /> } /> */}
+           <Route path='/blog' name='Blog' component={Posts} />
+           <Route path='/blog/mypost' name='Blog' component={MyPost} />
+           <AdminPrivateRoute exact path='/create/new/blog' name='Blog' component={CreatePost} />
+           <Route path='/blog/post/:postId' name='Blog' component={SinglePost} />
            <Route path='admin/user/:userId' name='Profile' render={props => <SingleUser {...props} /> } />
            <PrivateRoute path='/user/edit/:userId' name='Edit Profile' render={props => <EditProfile {...props} /> } />
            <Route path='/place-request/get-started' name='Admin Login' render={props => <PlaceARequestForm {...props} /> } />
@@ -73,6 +82,7 @@ import Register  from './views/pages/register/Register'
           <PrivateRoute path="/seller/:shopId/:productId/edit" component={EditProduct}/>
            <Route path='/seller/stripe/connect' name='Connect to Stripe' render={props => <StripeConnect {...props} /> } />
            <AdminPrivateRoute exact path='/admin'  component={Admin}  />
+          <Route path="/add-testimony" component={CreateTestimony} />
           </Switch>
      
    </div>

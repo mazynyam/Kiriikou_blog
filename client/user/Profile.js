@@ -110,6 +110,7 @@ export default function Profile({ match }) {
               new Date(user.created)).toDateString()}/>
           </ListItem>
         </List>
+        <Link to="/add-testimony">Add Testimony</Link>
         <MyOrders/>
       </Paper>
     )

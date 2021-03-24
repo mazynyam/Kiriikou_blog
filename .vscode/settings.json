@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/ffb7530a-6b88-46a8-814a-30e344befa1c/resourceGroups/kiriikou-group/providers/Microsoft.Web/sites/kiriikou"
+}

@@ -7,12 +7,15 @@ import compress from 'compression'
 import cors from 'cors'
 import helmet from 'helmet'
 import Template from './../template'
-
+import config from './../config/config'
 import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
 import shopRoutes from './routes/shop.routes'
 import productRoutes from './routes/product.routes'
 import orderRoutes from './routes/order.routes'
+import postRoutes from './routes/post.routes'
+import testimonyRoutes from './routes/testimony.routes'
+
 import Chat from './models/chatModel'
 
 // modules for server side rendering
@@ -24,14 +27,12 @@ import {  StaticRouter , Switch} from 'react-router-dom'
 import config from './../config/config'
 import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles'
 import theme from './../client/theme'
-//end
 
 //comment out before building for production
 // import devBundle from './devBundle'
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
-
 
 
 //comment out before building for production
@@ -45,7 +46,7 @@ app.use(compress())
 // secure apps by setting various HTTP headers
 app.use(helmet())
 // enable CORS - Cross Origin Resource Sharing
-app.use(cors({credentials:true, origin:'http://localhost:4000'}))
+app.use(cors({credentials:true, origin:`http://localhost:${config.PORT}`}))
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
   secret: config.jwtSecret,
@@ -57,13 +58,14 @@ app.use(session({
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
 
-
 // mount routes
 app.use('/', userRoutes)
 app.use('/', authRoutes)
 app.use('/', shopRoutes)
 app.use('/', productRoutes)
 app.use('/', orderRoutes)
+app.use('/', postRoutes)
+app.use('/', testimonyRoutes)
 
 
 app.get('*', (req, res) => {
