@@ -108,20 +108,38 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+
+  namesh:{
+    textDecorationColor:"#acd523",
+   '&:hover': {
+        textDecorationColor:"#acd523",
+         },
+  },
+  mysh:{
+    textDecorationColor:"#acd523",
+    '&:hover': {
+      textDecorationColor:"#acd523",
+       },
+
+  }
 }));
 
 const  isActive = (history, path) =>{
     if(history.location.pathname.includes(path))
-    return { color: '#acd523'}
+    return { color: '#acd523',
+  textDecoration:"none"}
     else{
-        return { color: '#acd523'}
+        return { color: '#acd523',
+        textDecorationColor:"none"}
     }
 }
 const isPartActive = (history, path) => {
     if (history.location.pathname.includes(path))
-      return {color: '#acd523'}
+      return {color: '#acd523',
+      textDecoration:"none"}
     else
-      return {color: '#acd523'}
+      return {color: '#acd523',
+      textDecoration:"none"}
     
 }
 /**
@@ -228,9 +246,9 @@ const Header = withRouter(({history}) =>{
                {
                 auth.isAuthenticated() && (<span>
                   {auth.isAuthenticated().user.seller && (
-                  <Link to="/seller/shops"><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
+                  <Link to="/seller/shops" className={classes.mysh}><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
                   <MenuItem >
-                  <Link to={"/user/" + auth.isAuthenticated().user._id}>
+                  <Link className={classes.namesh} to={"/user/" + auth.isAuthenticated().user._id}>
                   <IconButton color="inherit" style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>
                     <Badge  color="secondary">
                     <AccountCircle />
@@ -327,9 +345,9 @@ const Header = withRouter(({history}) =>{
           }
           {
                 auth.isAuthenticated() && (<span>
-                  {auth.isAuthenticated().user.seller && (<Link to="/seller/shops"><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
+                  {auth.isAuthenticated().user.seller && (<Link to="/seller/shops" className={classes.mysh}><Button style={isPartActive(history, "/seller/")}>My Shops</Button></Link>)}
                   
-                  <Link to={"/user/" + auth.isAuthenticated().user._id}>
+                  <Link  className={classes.namesh} to={"/user/" + auth.isAuthenticated().user._id}>
                     <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>{auth.isAuthenticated().user.name}</Button>
                   </Link>
                     <Button color="inherit" onClick={() => {

@@ -12,6 +12,7 @@ import {Link} from 'react-router-dom'
 import Footer from '../core/Footer'
 import Menu from '../core/Menu'
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -65,6 +66,9 @@ export default function Home(){
       abortController.abort()
     }
   }, [])
+
+  
+
   const next = ()=>{
     if(animating) return;
     const nextIndex = activeIndex === content.length - 1 ? 0 : activeIndex + 1;
@@ -81,11 +85,11 @@ export default function Home(){
     if(animating) return;
     setActiveIndex(newIndex)
   }
-  const slides = content.map((item, index)=> {
+  const slides = content.map((item)=> {
     return(
   
       <CarouselItem 
-      interval={20} 
+     
         onExiting={()=> setAnimating(true)}
         onExited={()=> setAnimating(false)}
         key={item.id} >
@@ -105,26 +109,26 @@ export default function Home(){
                   <Search categories={categories}/>
                 </Grid>
                 <Grid item xs={3} sm={1} md={1} lg={2} xl={1}>    
-                <h6 id="moneycolour"><span className="fa fa-money fa-lg" id="sellcolour"><Link style={{textDecoration:"none",color:'#000'}} to="/business/register/new">Make money on Kiriikou</Link></span> </h6>
+                <h6 id="moneycolour"><span className="fa fa-money fa-lg" id="sellcolour"><Link style={{textDecoration:"none",color:'#000'}} id="moneycolour" to="/business/register/new">Make money on Kiriikou</Link></span></h6>
                 </Grid>
                 <Grid item xs={3} sm={1} md={1} lg={2} xl={1} >
-                <h6 id="trust"><span className="fa fa-shopping-bag fa-lg" id="trt"><a style={{textDecoration:"none", color:'#000'}} href="/"> Shop with trust</a></span></h6>
+                <h6 id="trust"><span className="fa fa-shopping-bag fa-lg" id="trt"></span> Shop with trust</h6>
                 </Grid>
                 <Grid item xs={3} sm={1} md={1} lg={2} xl={1} >
-                <h6 id="support"><span className="fa fa-clock-o fa-lg" id="supp"></span><a style={{textDecoration:"none", color:'#000'}} >Quick Support</a></h6>
+                <h6 id="support"><span className="fa fa-clock-o fa-lg" id="supp"></span>Quick Support</h6>
                 </Grid>
                 <Grid item xs={3} sm={1} md={1} lg={2} xl={1} >
-                <h6 id="payment"><span className="fa fa-credit-card fa-lg" id="paynt"></span><a style={{textDecoration:"none", color:'#000'}} >Secure Payment</a></h6>
+                <h6 id="payment"><span className="fa fa-binoculars fa-lg" id="paynt"></span>Find almost anything you want</h6>
                 </Grid>
               
                 <Grid item xs={12} sm={12}  md={7} lg={7} xl={7} >
                   <Carousel 
-                  
+                  interval={1000}
                   activeIndex={activeIndex}
                   next={next}
                   previous={previous}
                 >
-                  <CarouselIndicators  items={content} activeIndex={activeIndex} onClickHandler={gotoIndex}  />
+                  <CarouselIndicators  items={content} activeIndex={activeIndex} onClickHandler={gotoIndex}/>
                   {slides}
                   <CarouselControl direction='prev' directionText='Previous' onClickHandler={previous} />
                   <CarouselControl direction='next' directionText='Next' onClickHandler={next} />
